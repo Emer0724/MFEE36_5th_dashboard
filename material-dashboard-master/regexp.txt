@@ -1,0 +1,8 @@
+# \d+-(\w+)-\w*
+# 777-$1-888
+
+123-bill-dkfhlkjflk
+784-david-dkfhlkjflk
+6786-aaron-dkfhlkjflk
+456-peter-dkfhlkjflk
+867897-john-dkfhlkjflk
