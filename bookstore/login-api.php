@@ -1,6 +1,6 @@
 <?php
 
-require './parts/connect-db.php';
+require './parts/db-connect.php';
 
 $output = [
     'success' => false,
