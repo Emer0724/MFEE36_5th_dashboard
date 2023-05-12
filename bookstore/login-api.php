@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 require './parts/connect-db.php';
+=======
+require './parts/db-connect.php';
+>>>>>>> bf05357f11936811acc523ef267285dc72e72df6
 
 $output = [
     'success' => false,

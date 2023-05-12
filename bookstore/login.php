@@ -1,7 +1,11 @@
 <?php
 $pageName = 'login';
 $title = '登入';
+<<<<<<< HEAD
 require './parts/connect-db.php';
+=======
+require './parts/db-connect.php';
+>>>>>>> bf05357f11936811acc523ef267285dc72e72df6
 
 if (isset($_SESSION['admin'])) {
     header('Location: index_.php');
@@ -50,7 +54,11 @@ if (isset($_SESSION['admin'])) {
 </div>
 
 
+<<<<<<< HEAD
 <?php include './parts/scripts.php' ?>
+=======
+<?php include './parts/script.php' ?>
+>>>>>>> bf05357f11936811acc523ef267285dc72e72df6
 
 <script>
     const nameField = document.querySelector('#name');
