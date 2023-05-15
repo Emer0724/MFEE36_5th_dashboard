@@ -1,12 +1,50 @@
+<?php
+# MVC
+$pageName = 'list';
+$title = '列表';
+require '../parts/db-connect.php';
+
+$perPage = 25; # 每頁最多幾筆
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁
+
+if ($page < 1) {
+    header('Location: ?page=1');
+    exit;
+}
+
+$t_sql = "SELECT COUNT(1) FROM book_info";
+$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; # 總筆數
+$totalPages = ceil($totalRows / $perPage); # 總頁數
+$rows = [];
+
+if ($totalRows) {
+    if ($page > $totalPages) {
+        header("Location: ?page=$totalPages");
+        exit;
+    }
+    $sql = sprintf("SELECT * FROM  book_info ORDER BY ISBN DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+
+
+?>
+<?php
+require '../parts/html-head.php';
+?>
+<?php
+require '../parts/aside.php';
+?>
 <!-- Navbar -->
 <nav class="navbar navbar-main navbar-expand-lg px-0  mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="true">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">頁面</a></li>
-                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">首頁</li>
+                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">商城管理</li>
             </ol>
-            <h6 class="font-weight-bolder mb-0">首頁</h6>
+            <h6 class="font-weight-bolder mb-0">商城管理</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -111,3 +149,101 @@
     </div>
 </nav>
 <!-- End Navbar 這邊是上面看到那些圖表的區域-->
+<div class="container">
+    <div class="row">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item <?= 1 == $page ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=1">
+                        <i class="fa-solid fa-angles-left"></i>
+                    </a>
+                </li>
+                <li class="page-item <?= 1 == $page ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=<?= $page - 1 ?>">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </a>
+                </li>
+                <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
+                    if ($i >= 1 and $i <= $totalPages) :
+                ?>
+                        <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                        </li>
+                <?php endif;
+                endfor; ?>
+                <li class="page-item <?= $totalPages == $page ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=<?= $page + 1 ?>">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </li>
+                <li class="page-item <?= $totalPages == $page ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=<?= $totalPages ?>">
+                        <i class="fa-solid fa-angles-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">書名</th>
+                    <th scope="col">照片</th>
+                    <th scope="col">作者</th>
+                    <th scope="col">出版社</th>
+                    <th scope="col">售價</th>
+                    <th scope="col">進價</th>
+                    <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($rows as $r) : ?>
+                    <tr>
+                        <td><a href="javascript: delete_it(<?= $r['ISBN'] ?>)">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a></td>
+                        <td><?= $r['ISBN'] ?></td>
+                        <td><?= $r['name'] ?></td>
+                        <td><?= $r['img_url'] ?></td>
+                        <td><?= $r['author'] ?></td>
+                        <td><?= $r['publisher'] ?></td>
+                        <td><?= $r['list_price'] ?></td>
+                        <td><?= $r['retail_price'] ?></td>
+                        <td><a href="edit.php?sid=<?= $r['ISBN'] ?>">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<?php
+require '../parts/scripts.php';
+?>
+<script>
+    document.querySelector('li.page-item.active a').removeAttribute('href');
+
+    function delete_it(ISBN) {
+        if (confirm(`是否要刪除編號為 ${ISBN} 的資料?`)) {
+            location.href = 'delete.php?sid=' + sid;
+        }
+
+    }
+</script>
+<?php
+require '../parts/html-foot.php';
+?>
