@@ -81,8 +81,9 @@ if ($cate_totalRows) {
             </ul>
         </nav>
     </div>
-    <div class="container">
-        <div class="row">     
+</div>
+<div class="container">
+    <div class="row">     
             <table class="table table-bordered table-striped">
             <h1>類別管理</h1>
                 <thead>
@@ -113,11 +114,11 @@ if ($cate_totalRows) {
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <div class="">
-                <a class="nav-link <?= $pageName == 'add' ? 'active' : '' ?>" href="category-create.php">新增類別</a>
-            </div>
+        <div class="py-5">
+           <a href="category-create.php" class="btn btn-secondary fs-5 d-flex justify-content-center align-items-center" style="width: 150px; height:60px;">新增類別</a>    
         </div>
     </div>
+</div>
 
 
     <?php include './parts/scripts.php' ?>

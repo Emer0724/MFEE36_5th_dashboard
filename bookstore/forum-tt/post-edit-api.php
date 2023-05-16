@@ -5,7 +5,6 @@ require './parts/connection.php';
 $output = [
     'success' => false,
     'postData' => $_POST,
-    # 除錯用的
     'code' => 0,
     'error' => []
 ];

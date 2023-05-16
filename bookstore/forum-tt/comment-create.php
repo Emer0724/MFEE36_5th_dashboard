@@ -8,9 +8,9 @@ require "./parts/connection.php";
 
 <?php include('./parts/navbar.php') ?>
 <?php
-$sid = isset ($_GET['sid']) ? intval($_GET['sid']):0;
+$sid = isset ($_GET['c_sid']) ? intval($_GET['c_sid']):0;
 
-$sql = "SELECT * FROM forum_comment WHERE sid = {$sid}";
+$sql = "SELECT * FROM forum_comment WHERE c_sid = {$sid}";
 
 $r = $pdo->query($sql)->fetch();
 ?>
@@ -22,6 +22,7 @@ $r = $pdo->query($sql)->fetch();
                 <div class="card-body">
                     <h5 class="card-title">新增留言</h5>
                     <form name="form1" onsubmit="checkForm(event)">
+                       
                         <div class="mb-3">
                             <label for="comment" class="form-label">留言</label>
                             <input type="text" class="form-control bg-light" id="comment" name="comment">
@@ -41,7 +42,6 @@ $r = $pdo->query($sql)->fetch();
 <script>
     const commentField = document.querySelector('#comment');
     const infoBar = document.querySelector('#infoBar');
-    // 取得必填欄位
     const fields = document.querySelectorAll('form *[data-required="1"]');
 
     function checkForm(event) {
@@ -54,22 +54,7 @@ $r = $pdo->query($sql)->fetch();
         commentField.style.border = '1px solid #CCC';
         commentField.nextElementSibling.innerHTML = ''
 
-        let isPass = true; // 預設值是通過的
-
-        // TODO: 檢查欄位資料
-
-        /*
-        // 檢查必填欄位
-        for(let f of fields){
-            if(! f.value){
-                isPass = false;
-                f.style.border = '1px solid red';
-                f.nextElementSibling.innerHTML = '請填入資料'
-            }
-        }
-        */
-
-
+        let isPass = true;
         if (commentField.value.length < 2) {
             isPass = false;
             commentField.style.border = '1px solid red';
@@ -77,13 +62,10 @@ $r = $pdo->query($sql)->fetch();
         }
 
         if (isPass) {
-            const fd = new FormData(document.form1); // 沒有外觀的表單
-            // const usp = new URLSearchParams(fd); // 可以轉換為 urlencoded 格式
-            // console.log(usp.toString());
-
+            const fd = new FormData(document.form1);
             fetch('comment-create-api.php', {
                 method: 'POST',
-                body: fd, // Content-Type 省略, multipart/form-data
+                body: fd, 
             }).then(r => r.json())
                 .then(obj => {
                     console.log(obj);
@@ -118,8 +100,6 @@ $r = $pdo->query($sql)->fetch();
                     }, 2000);
                 })
 
-        } else {
-            // 沒通過檢查
         }
 
 

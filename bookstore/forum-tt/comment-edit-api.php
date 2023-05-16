@@ -5,7 +5,6 @@ require './parts/connection.php';
 $output = [
     'success' => false,
     'postData' => $_POST,
-    # 除錯用的
     'code' => 0,
     'error' => [],
 ];
@@ -13,14 +12,14 @@ $output = [
 
     $sql = "UPDATE `forum_comment` SET 
     `comment`=?
-    WHERE `sid`=? ";
+    WHERE `c_sid`=? ";
 
     $stmt = $pdo->prepare($sql);
 
     if ($isPass) {
         $stmt->execute([
             $_POST['comment'],
-            $_POST['sid']
+            $_POST['c_sid']
         ]);
 
         $output['success'] = !!$stmt->rowCount();

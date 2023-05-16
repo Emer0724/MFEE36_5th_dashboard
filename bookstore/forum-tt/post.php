@@ -1,23 +1,20 @@
 <?php
-# MVC
+
 require './parts/connection.php';
 
-$perPage = 5; # 每頁最多幾筆
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁
+$perPage = 5;
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1; 
 
 if ($page < 1) {
     header('Location: ?page=1');
     exit;
 }
 $t_sql = "SELECT COUNT(1) FROM forum";
-# $t_row = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM);
-# echo json_encode($t_row);
-# exit;
-$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; # 總筆數
+
+$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; 
 $totalPages = ceil($totalRows / $perPage);
 
-// echo "$totalRows,  $totalPages";
-// exit;
+
 $rows = [];
 
 if ($totalRows) {
@@ -25,15 +22,7 @@ if ($totalRows) {
         header("Location: ?page=$totalPages");
         exit;
     }
-    $sql = sprintf("SELECT * FROM forum ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage); //sprintf-格式化字符串 
-    // %s -> %表示一個字元s代表字串，常用%s %d; 
-
-    //ex:
-    //$name = dick;
-    //$person = asshole;
-    // $weed = sprintf("my name is %s and i am %s",$name,$person);
-    //echo $weed;
-
+    $sql = sprintf("SELECT * FROM forum ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
 }
 
@@ -47,7 +36,8 @@ if ($totalRows) {
 <?php include('./parts/navbar.php') ?>
 
 
-<div class="container">
+
+<div class="container ">
     <div class="row">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
@@ -82,10 +72,11 @@ if ($totalRows) {
             </ul>
         </nav>
     </div>
-    <div class="container">
-        <div class="row">     
-            <table class="table table-bordered table-striped">
-            <h1>貼文管理</h1>
+</div>
+<div class="container">
+    <div class="row"> 
+        <h1>貼文管理</h1>    
+            <table class="table table-bordered table-striped " style="padding-right: 300px;">
                 <thead>
                     <tr>
                         <th scope="col">貼文id</th>
@@ -93,10 +84,9 @@ if ($totalRows) {
                         <th scope="col">類別</th>
                         <th scope="col">標題</th>
                         <th scope="col">內容</th>
-                        <!-- <th scope="col">author</th> -->
                         <th scope="col">建立時間</th>
-                        <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
-                        <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
+                        <th scope="col">編輯</i></th>
+                        <th scope="col">刪除</i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -131,12 +121,12 @@ if ($totalRows) {
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <div class="">
-                <a class="nav-link <?= $pageName == 'add' ? 'active' : '' ?>" href="post-create.php">新增公告</a>
+            <div class="py-5">
+               <a href="./post-create.php" class="btn btn-secondary fs-5 d-flex justify-content-center align-items-center " style="width: 150px; height:60px;">新增公告</a>
             </div>
             
-        </div>
     </div>
+</div>
 
 
     <?php include './parts/scripts.php' ?>

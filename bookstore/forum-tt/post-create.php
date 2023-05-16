@@ -42,7 +42,6 @@ require "./parts/connection.php";
 <script>
     const titleField = document.querySelector('#title');
     const infoBar = document.querySelector('#infoBar');
-    // 取得必填欄位
     const fields = document.querySelectorAll('form *[data-required="1"]');
 
     function checkForm(event) {
@@ -57,24 +56,6 @@ require "./parts/connection.php";
             f.style.border ='1px solid #CCC';
          }
         };
-        // titleField.style.border = '1px solid #CCC';
-        // titleField.nextElementSibling.innerHTML = '';
-
-        // 預設值是通過的
-
-        // TODO: 檢查欄位資料
-
-        /*
-        // 檢查必填欄位
-        for(let f of fields){
-            if(! f.value){
-                isPass = false;
-                f.style.border = '1px solid red';
-                f.nextElementSibling.innerHTML = '請填入資料'
-            }
-        }
-        */
-
 
         if (titleField.value.length < 2) {
             isPass = false;
@@ -83,12 +64,10 @@ require "./parts/connection.php";
         }
 
         if (isPass) {
-            const fd = new FormData(document.form1); // 沒有外觀的表單
-            // const usp = new URLSearchParams(fd); // 可以轉換為 urlencoded 格式
-            // console.log(usp.toString());
+            const fd = new FormData(document.form1);
             fetch('post-create-api.php', {
                 method: 'POST',
-                body: fd, // Content-Type 省略, multipart/form-data
+                body: fd, 
             }).then(r => r.json())
                 .then(obj => {
                     console.log(obj);

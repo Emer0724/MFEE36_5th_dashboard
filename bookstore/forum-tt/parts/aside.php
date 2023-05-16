@@ -209,4 +209,3 @@
         </ul>
     </div>
 </aside>
-<main class="main-content position-relative max-height-vh-100 h-100 py-3 border-radius-lg ">

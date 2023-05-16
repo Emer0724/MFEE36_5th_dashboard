@@ -1,9 +1,9 @@
 <?php
-# MVC
+
 require './parts/connection.php';
 
-$perPage = 5; # 每頁最多幾筆
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁
+$perPage = 5;
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1; 
 
 if ($page < 1) {
     header('Location: ?page=1');
@@ -11,30 +11,22 @@ if ($page < 1) {
 }
 
 $com_sql = "SELECT COUNT(1) FROM forum_comment";
-# $t_row = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM);
-# echo json_encode($t_row);
-# exit;
-$com_totalRows = $pdo->query($com_sql)->fetch(PDO::FETCH_NUM)[0]; # 總筆數
+
+$com_totalRows = $pdo->query($com_sql)->fetch(PDO::FETCH_NUM)[0]; 
 $com_totalPages = ceil($com_totalRows / $perPage);
 
-// echo "$totalRows,  $totalPages";
-// exit;
+
 
 if ($com_totalRows) {
     if ($page > $com_totalPages) {
         header("Location: ?page=$com_totalPages");
         exit;
     }
-    $com_sql = sprintf("SELECT * FROM forum_comment ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage); //sprintf-格式化字符串 
-    // %s -> %表示一個字元s代表字串，常用%s %d; 
-
-    //ex:
-    //$name = dick;
-    //$person = asshole;
-    // $weed = sprintf("my name is %s and i am %s",$name,$person);
-    //echo $weed;
+    $com_sql = sprintf("SELECT * FROM forum_comment ORDER BY c_sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage); 
 
     $com_rows = $pdo->query($com_sql)->fetchAll();
+    
+    
 }
 
 ?>
@@ -81,14 +73,25 @@ if ($com_totalRows) {
             </ul>
         </nav>
     </div>
-    <div class="container">
-        <div class="row">     
+</div>
+
+<?php
+$join_sql = "SELECT forum_comment.c_sid,forum_comment.comment,forum_comment.created,forum.title,forum.article,forum_comment.parent_id FROM forum_comment LEFT JOIN forum ON forum_comment.parent_id = forum.sid;";
+
+$com_rows1 = $pdo->query($join_sql)->fetchAll();
+
+
+?>
+<div class="container">
+    <div class="row">     
             <table class="table table-bordered table-striped">
             <h1>留言管理</h1>
                 <thead>
                     <tr>
                         <th scope="col">留言id</th>
                         <th scope="col">留言</th>
+                        <th scope="col">標題</th>
+                        <th scope="col">文章</th>
                         <th scope="col">建立時間</th>
                         <th scope="col">貼文id</th>
                         <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
@@ -96,13 +99,19 @@ if ($com_totalRows) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($com_rows as $r) : ?>
+                    <?php foreach ($com_rows1 as $r) : ?>
                         <tr>
                             <td>
-                                <?= $r['sid'] ?>
+                                <?= $r['c_sid'] ?>
                             </td>
                             <td>
                                 <?= $r['comment'] ?>
+                            </td>
+                            <td>
+                                <?= $r['title'] ?>
+                            </td>
+                            <td>
+                                <?= $r['article'] ?>
                             </td>
                             <td>
                                 <?= $r['created'] ?>
@@ -110,31 +119,31 @@ if ($com_totalRows) {
                             <td>
                                 <?= $r['parent_id'] ?>
                             </td>
-                            <td><a href="comment-edit.php?sid=<?= $r['sid'] ?>">
+                            <td><a href="comment-edit.php?sid=<?= $r['c_sid'] ?>">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                             </td>
-                            <td><a href="javascript: delete_it(<?= $r['sid'] ?>)">
+                            <td><a href="javascript: delete_it(<?= $r['c_sid'] ?>)">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <div class="">
-                <a class="nav-link <?= $pageName == 'add' ? 'active' : '' ?>" href="comment-create.php">新增留言</a>
-            </div>
+        <div class="py-5">
+           <a href="comment-create.php" class="btn btn-secondary fs-5 d-flex justify-content-center align-items-center" style="width: 150px; height:60px;">新增留言</a>    
         </div>
     </div>
+</div>
 
 
     <?php include './parts/scripts.php' ?>
     <script>
         document.querySelector('li.page-item.active a').removeAttribute('href');
 
-        function delete_it(sid) {
-            if (confirm(`是否要刪除編號為 ${sid} 的資料?`)) {
-                location.href = 'comment-delete.php?sid=' + sid;
+        function delete_it(c_sid) {
+            if (confirm(`是否要刪除編號為 ${c_sid} 的資料?`)) {
+                location.href = 'comment-delete.php?c_sid=' + c_sid;
             }
 
         }

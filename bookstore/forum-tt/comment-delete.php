@@ -2,9 +2,9 @@
 // require './parts/admin-required.php';
 require './parts/connection.php';
 
-$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$sid = isset($_GET['c_sid']) ? intval($_GET['c_sid']) : 0;
 
-$sql = " DELETE FROM forum_comment WHERE sid={$sid}";
+$sql = " DELETE FROM forum_comment WHERE c_sid={$sid}";
 
 $pdo->query($sql);
 

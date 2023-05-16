@@ -1,23 +1,19 @@
 <?php
-# MVC
+
 require './parts/connection.php';
 
-$perPage = 5; # 每頁最多幾筆
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁
+$perPage = 5; 
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1; 
 
 if ($page < 1) {
     header('Location: ?page=1');
     exit;
 }
 $t_sql = "SELECT COUNT(1) FROM forum";
-# $t_row = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM);
-# echo json_encode($t_row);
-# exit;
-$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; # 總筆數
+
+$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; 
 $totalPages = ceil($totalRows / $perPage);
 
-// echo "$totalRows,  $totalPages";
-// exit;
 $rows = [];
 
 if ($totalRows) {
@@ -25,15 +21,7 @@ if ($totalRows) {
         header("Location: ?page=$totalPages");
         exit;
     }
-    $sql = sprintf("SELECT * FROM forum ORDER BY sid ASC   LIMIT %s, %s", ($page - 1) * $perPage, $perPage); //sprintf-格式化字符串 
-    // %s -> %表示一個字元s代表字串，常用%s %d; 
-
-    //ex:
-    //$name = dick;
-    //$person = asshole;
-    // $weed = sprintf("my name is %s and i am %s",$name,$person);
-    //echo $weed;
-
+    $sql = sprintf("SELECT * FROM forum ORDER BY sid ASC   LIMIT %s, %s", ($page - 1) * $perPage, $perPage); 
     $rows = $pdo->query($sql)->fetchAll();
 }
 

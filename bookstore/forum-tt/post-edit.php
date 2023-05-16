@@ -67,7 +67,6 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
 <script>
     const titleField = document.querySelector('#title');
     const infoBar = document.querySelector('#infoBar');
-    // 取得必填欄位
     const fields = document.querySelectorAll('form *[data-required="1"]');
 
     function checkForm(event) {
@@ -80,22 +79,7 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
         titleField.style.border = '1px solid #CCC';
         titleField.nextElementSibling.innerHTML = ''
 
-        let isPass = true; // 預設值是通過的
-
-        // TODO: 檢查欄位資料
-
-        /*
-        // 檢查必填欄位
-        for(let f of fields){
-            if(! f.value){
-                isPass = false;
-                f.style.border = '1px solid red';
-                f.nextElementSibling.innerHTML = '請填入資料'
-            }
-        }
-        */
-
-
+        let isPass = true;
         if (titleField.value.length < 2) {
             isPass = false;
             titleField.style.border = '1px solid red';
@@ -103,13 +87,13 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
         }
 
         if (isPass) {
-            const fd = new FormData(document.form1); // 沒有外觀的表單
-            const usp = new URLSearchParams(fd); // 可以轉換為 urlencoded 格式
+            const fd = new FormData(document.form1); 
+            const usp = new URLSearchParams(fd); 
             console.log(usp.toString());
 
             fetch('post-edit-api.php', {
                     method: 'POST',
-                    body: fd, // Content-Type 省略, multipart/form-data
+                    body: fd, 
                 }).then(r => r.json())
                 .then(obj => {
                     console.log(obj);
@@ -142,10 +126,7 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
                     }, 2000);
                 })
 
-        } else {
-            // 沒通過檢查
         }
-
 
     }
 </script>
