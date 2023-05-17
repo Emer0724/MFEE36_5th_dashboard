@@ -1,44 +1,14 @@
 <?php
+// require '../parts/admin-required.php';
+$pageName = 'add';
+$title = '新增';
 require '../parts/db-connect.php';
 ?>
 <?php
-# MVC
-$pageName = 'list';
-$title = '列表';
-$perPage = 25; # 每頁最多幾筆
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁
-
-if ($page < 1) {
-  header('Location: ?page=1');
-  exit;
-}
-
-$t_sql = "SELECT COUNT(1) FROM orders";
-$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; # 總筆數
-$totalPages = ceil($totalRows / $perPage); # 總頁數
-$rows = [];
-
-if ($totalRows) {
-  if ($page > $totalPages) {
-    header("Location: ?page=$totalPages");
-    exit;
-  }
-  $sql = sprintf("SELECT a.*, b.status FROM orders AS a LEFT JOIN (SELECT DISTINCT `order_id`, `status` FROM order_details) AS b USING (order_id) ORDER BY a.order_id DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-
-  $rows = $pdo->query($sql)->fetchAll();
-}
-
-
-
-?>
-<?php
 require '../parts/html-head.php';
-?>
-
-
-<?php
-require '../parts/aside.php';
-?>
+?> <?php
+    require '../parts/aside.php';
+    ?>
 <!-- Navbar -->
 <nav class="navbar navbar-main navbar-expand-lg px-0  mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="true">
   <div class="container-fluid py-1 px-3">
@@ -47,7 +17,7 @@ require '../parts/aside.php';
         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">頁面</a></li>
         <li class="breadcrumb-item text-sm text-dark active" aria-current="page">訂單管理</li>
       </ol>
-      <h6 class="font-weight-bolder mb-0">訂單管理</h6>
+      <h6 class="font-weight-bolder mb-0">新增訂單</h6>
     </nav>
     <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
       <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -152,105 +122,77 @@ require '../parts/aside.php';
   </div>
 </nav>
 <!-- End Navbar 這邊是上面看到那些圖表的區域-->
+<style>
+  form .mb-3 .form-text {
+    color: red;
+  }
+
+  .area {
+    border: 1px solid gray;
+
+
+
+  }
+</style>
+
+
 <div class="container">
   <div class="row">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item <?= 1 == $page ? 'disabled' : '' ?>">
-          <a class="page-link" href="?page=1">
-            <i class="fa-solid fa-angles-left"></i>
-          </a>
-        </li>
-        <li class="page-item <?= 1 == $page ? 'disabled' : '' ?>">
-          <a class="page-link" href="?page=<?= $page - 1 ?>">
-            <i class="fa-solid fa-angle-left"></i>
-          </a>
-        </li>
-        <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
-          if ($i >= 1 and $i <= $totalPages) :
-        ?>
-            <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-              <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-            </li>
-        <?php endif;
-        endfor; ?>
-        <li class="page-item <?= $totalPages == $page ? 'disabled' : '' ?>">
-          <a class="page-link" href="?page=<?= $page + 1 ?>">
-            <i class="fa-solid fa-angle-right"></i>
-          </a>
-        </li>
-        <li class="page-item <?= $totalPages == $page ? 'disabled' : '' ?>">
-          <a class="page-link" href="?page=<?= $totalPages ?>">
-            <i class="fa-solid fa-angles-right"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <div class="row">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
-          <th scope="col">訂單編號</th>
-          <th scope="col">客戶編號</th>
-          <th scope="col">下單日期</th>
-          <th scope="col">更新日期</th>
-          <th scope="col">交易狀態</th>
-          <th scope="col">總金額</th>
-          <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($rows as $r) : ?>
-          <tr>
-            <td><a href="javascript: delete_it(<?= $r['order_id'] ?>)">
-                <i class="fa-solid fa-trash-can"></i>
-              </a></td>
-            <td><?= $r['order_id'] ?></td>
-            <td><?= $r['client_id'] ?></td>
-            <td><?= $r['created'] ?></td>
-            <td><?= $r['updated'] ?></td>
-            <td><?= $r['status'] ?></td>
-            <td><?= $r['price'] ?></td>
-            <td><a href="edit.php?sid=<?= $r['order_id'] ?>">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
+    <div class="col-6">
+      <div class="card">
 
-      </tbody>
-    </table>
+        <div class="card-body">
+          <h5 class="card-title">新增訂單</h5>
+          <form name="form1" onsubmit="checkForm(event)">
+            <div class="mb-3">
+              <label for="name" class="form-label">訂單編號</label>
+              <input type="text" class="form-control area bg-light" id="order_id" name="order_id" data-required="1">
+              <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">客戶編號</label>
+              <input type="text" class="form-control area bg-light" id="client_id" name="client_id" data-required="1">
+              <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="mobile" class="form-label">下單日期</label>
+              <input type="date" class="form-control area bg-light" id="created" name="created">
+              <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="birthday" class="form-label">更新日期</label>
+              <input type="date" class="form-control area bg-light" id="updated" name="updated">
+              <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">交易狀態</label>
+              <input type="text" class="form-control area bg-light" id="status" name="status" data-required="1">
+              <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">總金額</label>
+              <input type="text" class="form-control area bg-light" id="price" name="price" data-required="1">
+              <div class="form-text"></div>
+            </div>
+            <div class="alert alert-danger" role="alert" id="infoBar" style="display:none"></div>
+            <button type="submit" class="btn btn-primary send">新增</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<div class="container">
-  <button type="submit" class="btn btn-primary ">新增</button>
-
-</div>
-
-
-
-
-
-
-
 <?php
 require '../parts/scripts.php';
 ?>
 <script>
-  document.querySelector('li.page-item.active a').removeAttribute('href');
+  document.querySelector(send).onclick = send;
 
-  function delete_it(order_id) {
-    if (confirm(`是否要刪除編號為 ${order_id} 的資料?`)) {
-      location.href = 'delete.php?sid=' + sid;
-    }
+  function send() {
 
-  }
-  document.querySelector('.btn').onclick = add;
 
-  function add() {
-    window.location.href = './order-add.php';
+
+
   }
 </script>
 <?php

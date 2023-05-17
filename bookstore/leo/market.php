@@ -1,9 +1,10 @@
 <?php
+require '../parts/db-connect.php';
+?>
+<?php
 # MVC
 $pageName = 'list';
 $title = '列表';
-require '../parts/db-connect.php';
-
 $perPage = 25; # 每頁最多幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁
 
@@ -33,6 +34,7 @@ if ($totalRows) {
 <?php
 require '../parts/html-head.php';
 ?>
+
 <?php
 require '../parts/aside.php';
 ?>
@@ -207,7 +209,7 @@ require '../parts/aside.php';
                             </a></td>
                         <td><?= $r['ISBN'] ?></td>
                         <td><?= $r['name'] ?></td>
-                        <td><?= $r['img_url'] ?></td>
+                        <td><img src="<?= $r['img_url'] ?>" alt="圖片"> </td>
                         <td><?= $r['author'] ?></td>
                         <td><?= $r['publisher'] ?></td>
                         <td><?= $r['list_price'] ?></td>
@@ -223,7 +225,10 @@ require '../parts/aside.php';
         </table>
     </div>
 </div>
+<div class="container">
+    <button type="submit" class="btn btn-primary ">新增</button>
 
+</div>
 
 
 
@@ -239,9 +244,13 @@ require '../parts/scripts.php';
 
     function delete_it(ISBN) {
         if (confirm(`是否要刪除編號為 ${ISBN} 的資料?`)) {
-            location.href = 'delete.php?sid=' + sid;
+            location.href = './market-delete-api.php?ISBN=' + ISBN;
         }
+    }
+    document.querySelector('.btn').onclick = add;
 
+    function add() {
+        window.location.href = './market-add.php';
     }
 </script>
 <?php

@@ -9,16 +9,15 @@ require '../parts/html-head.php';
 ?>
 <?php
 require '../parts/aside.php';
-?>
-<!-- Navbar -->
+?> <!-- Navbar -->
 <nav class="navbar navbar-main navbar-expand-lg px-0  mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="true">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">頁面</a></li>
-                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">優惠券管理</li>
+                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">商城管理</li>
             </ol>
-            <h6 class="font-weight-bolder mb-0">新增優惠券</h6>
+            <h6 class="font-weight-bolder mb-0">新增商品</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -123,7 +122,6 @@ require '../parts/aside.php';
     </div>
 </nav>
 <!-- End Navbar 這邊是上面看到那些圖表的區域-->
-
 <style>
     form .mb-3 .form-text {
         color: red;
@@ -144,46 +142,52 @@ require '../parts/aside.php';
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">新增優惠券</h5>
-                    <form name="form_coupon" onsubmit="checkForm(event)">
+                    <h5 class="card-title">新增商品</h5>
+                    <form name="form_market" onsubmit="checkForm(event)">
                         <div class="mb-3">
-                            <label for="name" class="form-label">優惠券名稱</label>
+                            <label for="ISBN" class="form-label">ISBN</label>
+                            <input type="text" class="form-control area bg-light" id="ISBN" name="ISBN" data-required="1">
+                            <div class="form-text"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">書名</label>
                             <input type="text" class="form-control area bg-light" id="name" name="name" data-required="1">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="amount" class="form-label">折抵金額</label>
-                            <input type="text" class="form-control area bg-light" id="amount" name="amount" data-required="1">
+                            <label for="img_url" class="form-label">書籍照片</label>
+                            <input type="text" class="form-control area bg-light" id="img_url" name="img_url" data-required="1">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="code" class="form-label">折扣碼</label>
-                            <input type="text" class="form-control area bg-light" id="code" name="code" data-required="1">
+                            <label for="author" class="form-label">作者</label>
+                            <input type="text" class="form-control area bg-light" id="authore" name="author" data-required="1">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="period" class="form-label">有效天數</label>
-                            <input type="text" class="form-control area bg-light" id="period" name="period">
+                            <label for="publisher" class="form-label">出版社</label>
+                            <input type="text" class="form-control area bg-light" id="publisher" name="publisher" data-required="1">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="start" class="form-label">開始日期</label>
-                            <input type="date" class="form-control area bg-light" id="start" name="start">
+                            <label for="list_price" class="form-label">售價</label>
+                            <input type="text" class="form-control area bg-light" id="list_price" name="list_price" data-required="1">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="end" class="form-label">結束日期</label>
-                            <input type="date" class="form-control area bg-light" id="end" name="end">
+                            <label for="retail_price" class="form-label">進價</label>
+                            <input type="text" class="form-control area bg-light" id="retail_price" name="retail_price" data-required="1">
                             <div class="form-text"></div>
                         </div>
                         <div class="alert alert-danger" role="alert" id="infoBar" style="display:none"></div>
-                        <button type="submit" class="btn btn-primary" onclick="calculateFutureDate()">新增</button>
+                        <button type="submit" class="btn btn-primary">新增</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 
@@ -208,7 +212,7 @@ require '../parts/scripts.php';
             f.style.border = '1px solid #cccccc';
             f.nextElementSibling.innerHTML = '';
         }
-        // nameField.style.border = '1px solid #CCC';
+        // nameField.style.border = '1px solid #cccccc';
         // nameField.nextElementSibling.innerHTML = '';
 
         let isPass = true; // 預設值是通過的
@@ -234,11 +238,11 @@ require '../parts/scripts.php';
         // }
 
         if (isPass) {
-            const fd = new FormData(document.form_coupon); // 沒有外觀的表單
+            const fd = new FormData(document.form_market); // 沒有外觀的表單
             // const usp = new URLSearchParams(fd); // 可以轉換為 urlencoded 格式
             // console.log(usp.toString());
 
-            fetch('coupon-add-api.php', {
+            fetch('market-add-api.php', {
                     method: 'POST',
                     body: fd, // Content-Type 省略, multipart/form-data
                 }).then(r => r.json())
@@ -277,32 +281,6 @@ require '../parts/scripts.php';
         }
 
 
-    }
-
-    function calculateEndDate() {
-        var periodElement = document.getElementById("period");
-        var period = parseInt(periodElement.value);
-
-        var startElement = document.getElementById("start");
-        var startDate = new Date(startElement.value);
-
-        if (!isNaN(period) && !isNaN(startDate.getTime())) {
-            var endDate = new Date(startDate.getTime());
-            endDate.setDate(startDate.getDate() + period);
-
-            var endElement = document.getElementById("end");
-            endElement.value = formatDate(endDate);
-        } else {
-            var endElement = document.getElementById("end");
-            endElement.value = "";
-        }
-    }
-
-    function formatDate(date) {
-        var year = date.getFullYear();
-        var month = ('0' + (date.getMonth() + 1)).slice(-2);
-        var day = ('0' + date.getDate()).slice(-2);
-        return year + '-' + month + '-' + day;
     }
 </script>
 <?php
