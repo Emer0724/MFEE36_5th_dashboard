@@ -6,6 +6,6 @@ if (!isset($_SESSION)) {
 
 
 if (!isset($_SESSION['admin'])) {
-    header('Location: index.php');
+    header('Location: index_.php');
     exit;
 }

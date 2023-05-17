@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white" href="../index.php">
+                <a class="nav-link text-white" href="../pages/index.html">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-house"></i>
                     </div>
@@ -49,11 +49,11 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <a class="nav-link text-white " href="./order.php">
+                            <a class="nav-link text-white " href="./order.html">
                                 <div class="text-white text-center me-2  d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-rectangle-list"></i>
                                 </div>
-                                <span class="nav-link-text ms-1 ">商城/訂單管理</span>
+                                <span class="nav-link-text ms-1 ">訂單管理</span>
                             </a>
                         </button>
                     </h2>
@@ -62,7 +62,7 @@
             <li class="nav-item">
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./market.php">
+                        <a class="nav-link text-white " href="./order-store.html">
                             <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-2">商城</span>
@@ -73,19 +73,7 @@
             </li>
             <li class="nav-item">
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <a class="nav-link text-white " href="./order.php">
-                            <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-pencil"></i>
-                                <span class="nav-link-text ms-2">訂單管理</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <a class="nav-link text-white " href="./coupon.php">
+                    <a class="nav-link text-white " href="./order-promotion.html">
                         <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-pencil"></i>
                             <span class="nav-link-text ms-2">促銷與折價券</span>
@@ -98,7 +86,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <a class="nav-link text-white " href="./oldbook.html">
+                            <a class="nav-link text-white " href="./二手書/used_list.php">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-book-open"></i>
                                 </div>
@@ -194,7 +182,7 @@
                 <h6 class="ps-4 ms-2  text-lg text-white font-weight-bolder opacity-8">管理操作</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="./pages/sign-in.html">
+                <a class="nav-link text-white " href="../pages/sign-in.html">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">login</i>
                     </div>
@@ -202,7 +190,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="./pages/sign-up.html">
+                <a class="nav-link text-white " href="../pages/sign-up.html">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">assignment</i>
                     </div>
