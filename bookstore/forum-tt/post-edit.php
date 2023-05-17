@@ -32,7 +32,6 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
                         <div class="mb-3 ">
                             <label for="category" class="form-label d-block">類別</label>
                             <select name="category" id="category">
-                                <option value="123">123</option>
                                <?php foreach($rows_c as $c):?>
                                  <option name="category" value="<?=$c['category']?>"><?=$c['category']?></option>
                                  <?php endforeach;?>

@@ -25,7 +25,7 @@ $r = $pdo->query($sql)->fetch();
                        
                         <div class="mb-3">
                             <label for="comment" class="form-label">留言</label>
-                            <input type="text" class="form-control bg-light" id="comment" name="comment">
+                            <input type="text" class="form-control bg-light ps-2" id="comment" name="comment">
                             <div class="form-text"></div>
                         </div>
                         <input type="hidden" class="form-control bg-light" id="created" name="created">

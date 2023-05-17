@@ -36,7 +36,7 @@
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="./assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
@@ -54,7 +54,7 @@
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="./assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
@@ -101,7 +101,7 @@
                     </ul>
                 </li>
                 <li class="nav-item d-flex align-items-center">
-                    <a href="./pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+                    <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
                         <i class="fa fa-user me-sm-1"></i>
                         <span class="d-sm-inline d-none">Sign In</span>
                     </a>
