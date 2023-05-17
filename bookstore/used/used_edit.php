@@ -1,5 +1,7 @@
 <?php
 include '../parts/connect_db.php';
+$tital_1 = '二手書管理';
+$tital_2 = '二手書檢視/修改';
 $serial_id = isset($_GET['serial_id']) ? $_GET['serial_id'] : 0;
 $sql = "SELECT * FROM used as a join book_info as b using(ISBN) LEFT JOIN book_status as c  on a.book_status=c.status_id   where serial_id={$serial_id}";
 $r = $pdo->query($sql)->fetch();

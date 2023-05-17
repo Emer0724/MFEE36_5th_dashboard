@@ -98,10 +98,10 @@
             <li class="nav-item">
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./oldbook-check.html">
+                        <a class="nav-link text-white " href="./used_list_1.php">
                             <div class="text-gray text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
-                                <span class="nav-link-text ms-3">書況評估</span>
+                                <span class="nav-link-text ms-3">二手書清單</span>
                             </div>
                         </a>
                     </div>
@@ -182,7 +182,7 @@
                 <h6 class="ps-4 ms-2  text-lg text-white font-weight-bolder opacity-8">管理操作</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/sign-in.html">
+                <a class="nav-link text-white " href="../login/login.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">login</i>
                     </div>

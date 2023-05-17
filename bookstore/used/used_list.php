@@ -1,6 +1,8 @@
 <?php
 require '../parts/connect_db.php';
 
+$tital = '二手書清單';
+
 $select = isset($_GET['select']) ? $_GET['select'] : 'all';
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 // $serial_id = isset($_GET['serial_id']) ? intval($_GET['serial_id']) : 'none';
