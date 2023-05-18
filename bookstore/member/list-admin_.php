@@ -19,14 +19,6 @@ $t_sql = "SELECT COUNT(1) FROM member";
 // $t_sql = "SELECT a.*, b.sub_total from member as a left join (select client_id, sum(price)as sub_total from orders GROUP by client_id) as b on a.sid=b.client_id";
 
 
-/////////////////////////////////
-$sqlStatusEmpty = sprintf("SELECT * FROM member WHERE (status = '' OR status IS NULL) AND sid IS NOT NULL ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-
-$rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
-
-///////////////////////////////// 
-
-
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; # 總筆數
 $totalPages = ceil($totalRows / $perPage); # 總頁數
 $rows = [];
@@ -53,23 +45,6 @@ function stringToHslColor($str, $s, $l)
 }
 
 
-
-//<---------------------------------->
-
-// Query for all members where id is not NULL
-// $account_disabled = sprintf("SELECT * FROM member WHERE status = '' AND sid IS NOT NULL ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-// $rowsAll = $pdo->query($sqlAll)->fetchAll();
-
-// Query for members with empty status where id is not NULL
-// $sqlStatusEmpty = sprintf("SELECT * FROM member WHERE status = '' AND sid IS NOT NULL ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-$rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
-
-// $t_sqlAll = "SELECT COUNT(1) FROM member WHERE sid IS NOT NULL";
-// $t_sqlStatusEmpty = "SELECT COUNT(1) FROM member WHERE status = '' AND sid IS NOT NULL";
-
-//<---------------------------------->
-
-
 ?>
 
 <style>
@@ -93,18 +68,6 @@ $rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
 
     table tr:hover {
         background-color: #AFDDD5;
-    }
-
-    .modal {
-        z-index: 999;
-    }
-
-    #modal-control {
-        position: relative;
-        right: 0;
-        top: 0;
-        /* z-index: 9999; */
-
     }
 </style>
 
@@ -156,8 +119,6 @@ $rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
             <div class="add">
                 <a href="add.php" class="btn btn-primary">新增</a>
             </div>
-            <button type="button" class="btn btn-dark" id="modal-control" data-bs-toggle="modal" data-bs-target="#exampleModal">停權帳號</button>
-
         </div>
     </div>
 </div>
@@ -213,116 +174,12 @@ $rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
     </table>
 </div>
 
-
-<!-- Modal -->
-
-
-<div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">停權帳號</h5>
-                <button type="button" class="btn-close btn-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Recipient:</label>
-                            <input type="text" class="form-control" id="recipient-name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                    </form> -->
-
-
-
-                <table class="table" id="table" data-toggle="table" data-search="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-pagination-switch="true" data-pagination="true" data-toolbar="form" data-resizable="true" data-id-field="id" data-click-to-select="true">
-
-                    <thead>
-                        <tr>
-
-                            <th scope="col" class='text-center' data-sortable='true'>會員狀態</th>
-                            <th scope="col" class='text-center' data-sortable='true'>大頭照</th>
-                            <th scope="col" class='text-center' data-sortable='true'>#</th>
-                            <th scope="col" class='text-center' data-sortable='true'>姓名</th>
-                            <th scope="col" class='text-center' data-sortable='true'>手機</th>
-                            <th scope="col" class='text-center' data-sortable='true'>email</th>
-                            <th scope="col" class='text-center' data-sortable='true'>暱稱</th>
-                            <th scope="col" class='text-center' data-sortable='true'>消費金額</th>
-                            <th scope="col" class='text-center' data-sortable='true'>編輯</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php foreach ($rowsStatusEmpty as $r) : ?>
-                            <tr>
-                                <td class="d-flex align-items-center justify-content-center form-check form-switch">
-                                    <!-- <div class="form-check form-switch"> -->
-                                    <input class="form-check-input status-toggle" style="border:none" type="checkbox" id="flexSwitchCheckChecked" data-sid="<?= $r['sid'] ?>" <?= $r['status'] == 'Y' ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                                    <!-- </div> -->
-                                </td>
-                                <td class='text-center'>
-                                    <div class="profile-image">
-                                        <?php
-                                        $initial = mb_substr($r['email'], 0, 1, "UTF-8");
-                                        $initial = strtoupper($initial);
-                                        $color = stringToHslColor($initial, 50, 50);
-                                        ?>
-                                        <div class='user-image' style='background-color: <?= $color ?>;'><?= $initial ?></div>
-                                    </div>
-                                </td>
-                                <td class='text-center'><?= $r['sid'] ?></td>
-                                <td class='text-center'><?= $r['name'] ?></td>
-                                <td class='text-center'><?= $r['mobile'] ?></td>
-                                <td class='text-center'><?= $r['email'] ?></td>
-                                <td class='text-center'><?= $r['nickname'] ?></td>
-                                <td class='text-center'><?= $r['sub_total'] ?? '' ?></td>
-                                <td class="d-flex align-items-center justify-content-center">
-                                    <a href="edit.php?sid=<?= $r['sid'] ?>">
-                                        <i class="fa-solid fa-pen-to-square text-center"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-
-
-                </table>
-
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
-    </div>
+</table>
 </div>
 
-<script src="./js/bootstrap.bundle.min.js"></script>
-<script>
-    var exampleModal = document.getElementById('exampleModal')
-    exampleModal.addEventListener('show.bs.modal', function(event) {
-        // Button that triggered the modal
-        var button = event.relatedTarget
-        // Extract info from data-bs-* attributes
-        var recipient = button.getAttribute('data-bs-whatever')
-        // If necessary, you could initiate an AJAX request here
-        // and then do the updating in a callback.
-        //
-        // Update the modal's content.
-        var modalTitle = exampleModal.querySelector('.modal-title')
-        var modalBodyInput = exampleModal.querySelector('.modal-body input')
+</div>
 
-        modalTitle.textContent = 'New message to ' + recipient
-        modalBodyInput.value = recipient
-    })
-</script>
-
+</div>
 
 <?php include '../parts/scripts.php' ?>
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
@@ -348,8 +205,6 @@ $rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
 
     }
 </script>
-
-<!-- Modal -->
 
 <script>
     const statusToggle = document.querySelector('.status-toggle');
@@ -451,29 +306,6 @@ $rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
 </script>
 
 
-<script>
-    // change class on each of the panel
-
-    // use querySelectorAll to select all panels
-    // NodeList
-    const panels = document.querySelectorAll('.panel')
-
-    // panel action: remove unused panel then active selected one
-    panels.forEach((panel) => {
-        panel.addEventListener('click', () => {
-
-            removeActiveClasses()
-            panel.classList.add('active')
-        })
-    })
-
-    // define a function to remove active status
-    function removeActiveClasses() {
-        panels.forEach(panel => {
-            panel.classList.remove('active')
-        })
-    }
-</script>
 
 
 
