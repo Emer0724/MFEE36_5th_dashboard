@@ -225,7 +225,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFive">
                             <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                <a class="nav-link text-white " href="./forum-tt/index.php">
+                                <a class="nav-link text-white " href="#">
                                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i class="fa-solid fa-comments opacity-10"></i>
                                     </div>
@@ -237,7 +237,7 @@
                 <li class="nav-item">
                     <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a class="nav-link text-white " href="./forum-tt/index.php">
+                            <a class="nav-link text-white " href="./forum-tt/f-index.php">
                                 <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-pencil"></i>
                                     <span class="nav-link-text ms-3">論壇管理</span>
