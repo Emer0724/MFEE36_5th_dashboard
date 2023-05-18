@@ -2,7 +2,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="./index.html ">
-            <img src="./assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
+            <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold text-white">book書易</span>
         </a>
     </div>
@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white" href="./pages/index.html">
+                <a class="nav-link text-white" href="../pages/index.html">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-house"></i>
                     </div>
@@ -86,7 +86,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <a class="nav-link text-white " href="./oldbook.html">
+                            <a class="nav-link text-white " href="./二手書/used_list.php">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-book-open"></i>
                                 </div>
@@ -98,10 +98,10 @@
             <li class="nav-item">
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./oldbook-check.html">
+                        <a class="nav-link text-white " href="./used_list_1.php">
                             <div class="text-gray text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
-                                <span class="nav-link-text ms-3">書況評估</span>
+                                <span class="nav-link-text ms-3">二手書清單</span>
                             </div>
                         </a>
                     </div>
@@ -182,7 +182,7 @@
                 <h6 class="ps-4 ms-2  text-lg text-white font-weight-bolder opacity-8">管理操作</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="./pages/sign-in.html">
+                <a class="nav-link text-white " href="../login/login.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">login</i>
                     </div>
@@ -190,7 +190,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="./pages/sign-up.html">
+                <a class="nav-link text-white " href="../pages/sign-up.html">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">assignment</i>
                     </div>
