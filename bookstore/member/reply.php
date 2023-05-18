@@ -139,7 +139,7 @@ if ($result) {
                     </form>
                 </div>
                 <div class="log card w-50 shadow-none ms-1" id="ticket-log">
-                    <h6 style="color:black bold border-bottom:1px solid black" class="ms-1">客服處理紀錄</h6>
+                    <h6 style="color:black; border-bottom:1px solid black;" class="ms-1">客服處理紀錄</h6>
                     <div class="log ms-1"></div>
                     <?php echo $logHtml; ?>
                 </div>
