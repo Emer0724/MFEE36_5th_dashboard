@@ -98,7 +98,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <a class="nav-link text-white " href="./二手書/used_list.php">
+                            <a class="nav-link text-white " href="./used/used_list_1.php">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-book-open"></i>
                                 </div>

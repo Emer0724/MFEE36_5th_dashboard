@@ -5,7 +5,7 @@ $title_1 = '論壇管理';
 $title_2 = '貼文管理';
 
 $perPage = 5;
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1; 
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 if ($page < 1) {
     header('Location: ?page=1');
@@ -13,7 +13,7 @@ if ($page < 1) {
 }
 $t_sql = "SELECT COUNT(1) FROM forum";
 
-$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; 
+$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 $totalPages = ceil($totalRows / $perPage);
 
 $rows = [];
@@ -29,8 +29,11 @@ if ($totalRows) {
     $rows = $pdo->query($sql)->fetchAll();
 }
 
+?>
 
-
+<?php
+$title_1 = '論壇';
+$title_2 = '留言管理';
 
 ?>
 
@@ -58,24 +61,24 @@ if ($totalRows) {
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
 
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-   
-    
+
+
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
 
 
-<?php include('./parts/aside.php') ?>
+    <?php include('./parts/aside.php') ?>
 
-<?php include('./parts/navbar.php') ?>
-
-
+    <?php include('./parts/navbar.php') ?>
 
 
 
 
 
-<!-- <div class="container ">
+
+
+    <!-- <div class="container ">
     <div class="row">
        <nav aria-label="Page navigation example">
             <ul class="pagination">
@@ -111,17 +114,19 @@ if ($totalRows) {
         </nav> 
     </div> 
 </div> -->
-<div class="container">
-    <div class="row"> 
-            <div class="mb-3 "><h1>貼文管理</h1></div>
-            <table data-toggle="table" data-sortable="true"  data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" class="table table-">
+    <div class="container">
+        <div class="row">
+            <div class="mb-3 ">
+                <h1>貼文管理</h1>
+            </div>
+            <table data-toggle="table" data-sortable="true" data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" class="table table-">
                 <thead>
                     <tr>
                         <th scope="col" class="text-center" data-sortable="true">貼文id</th>
-                        <th scope="col" class="text-center" >會員暱稱</th>
+                        <th scope="col" class="text-center">會員暱稱</th>
                         <th scope="col" class="text-center" data-sortable="true">類別</th>
-                        <th scope="col" class="text-center" >標題</th>
-                        <th scope="col" class="text-center" >內容</th>
+                        <th scope="col" class="text-center">標題</th>
+                        <th scope="col" class="text-center">內容</th>
                         <th scope="col" class="text-center" data-sortable="true">建立時間</th>
                         <th scope="col" class="text-center">編輯</i></th>
                         <th scope="col" class="text-center">留言</i></th>
@@ -150,16 +155,16 @@ if ($totalRows) {
                                 <?= $r['created'] ?>
                             </td>
                             <td><a href="post-edit.php?sid=<?= $r['sid'] ?>">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
                             </td>
                             <td><a href="comment-create.php?sid=<?= $r['sid'] ?>">
-                                留言
-                            </a>
+                                    留言
+                                </a>
                             </td>
                             <td>
                                 <a href="javascript: delete_it(<?= $r['sid'] ?>)">
-                                <i class="fa-solid fa-trash-can"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </a>
                             </td>
                         </tr>
@@ -167,26 +172,25 @@ if ($totalRows) {
                 </tbody>
             </table>
             <div class="py-5">
-               <a href="./post-create.php" class="btn btn-secondary fs-5 d-flex justify-content-center align-items-center " style="width: 150px; height:60px;">新增公告</a>
+                <a href="./post-create.php" class="btn btn-secondary fs-5 d-flex justify-content-center align-items-center " style="width: 150px; height:60px;">新增公告</a>
             </div>
-            
+
+        </div>
     </div>
-</div>
 
-<?php include './parts/scripts.php' ?>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-<script>
-    document.querySelector('li.page-item.active a').removeAttribute('href');
+    <?php include './parts/scripts.php' ?>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <script>
+        document.querySelector('li.page-item.active a').removeAttribute('href');
 
-    function delete_it(sid) {
+        function delete_it(sid) {
             if (confirm(`是否要刪除編號為 ${sid} 的資料?`)) {
                 location.href = 'post-delete.php?sid=' + sid;
             }
 
         }
-
-</script>
-<?php include './parts/html-foot.php' ?>
+    </script>
+    <?php include './parts/html-foot.php' ?>
