@@ -156,7 +156,19 @@
                             <a class="nav-link text-white " href="./oldbook-check.html">
                                 <div class="text-gray text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-pencil"></i>
-                                    <span class="nav-link-text ms-3">書況評估</span>
+                                    <span class="nav-link-text ms-3">二手書清單</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <a class="nav-link text-white " href="./oldbook-check.html">
+                                <div class="text-gray text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-pencil"></i>
+                                    <span class="nav-link-text ms-3">書況管理</span>
                                 </div>
                             </a>
                         </div>
