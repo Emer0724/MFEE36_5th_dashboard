@@ -1,6 +1,8 @@
 <?php
 # MVC
 require './parts/connection.php';
+$title_1 ='論壇管理';
+$title_2 ='類別管理';
 
 $perPage = 5; # 每頁最多幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁
@@ -29,6 +31,10 @@ if ($cate_totalRows) {
 
     $cate_rows = $pdo->query($cate_sql)->fetchAll();
 }
+
+
+
+
 
 ?>
 <!DOCTYPE html>

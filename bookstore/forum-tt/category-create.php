@@ -1,6 +1,9 @@
 <?php
 require "./parts/connection.php";
+$title_1 = '論壇管理';
+$title_2 = '新增類別';
 ?>
+
 
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/aside.php' ?>
