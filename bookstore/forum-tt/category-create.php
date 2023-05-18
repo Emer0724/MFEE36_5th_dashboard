@@ -1,18 +1,7 @@
 <?php
-<<<<<<<< HEAD:bookstore/forum-tt/category-create.php
 require "./parts/connection.php";
 ?>
-========
-$pageName = 'login';
-$title = '登入';
-require '../parts/connect-db.php';
 
-if (isset($_SESSION['admin'])) {
-    header('Location: login.php');
-    exit;
-}
-
-?>
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/aside.php' ?>
 <?php include '../parts/navbar.php' ?>
@@ -21,7 +10,7 @@ if (isset($_SESSION['admin'])) {
         color: red;
     }
 </style>
->>>>>>>> 65cf96b3098cc70122d151b999ff15acf4046b32:bookstore/member/login.php
+
 
 <?php include('./parts/html-head.php') ?>
 
@@ -43,29 +32,24 @@ if (isset($_SESSION['admin'])) {
                         </div>
                         <div class="alert alert-danger" role="alert" id="infoBar" style="display:none">
                         </div>
-<<<<<<<< HEAD:bookstore/forum-tt/category-create.php
+
                         <button type="submit" class="btn btn-primary">發布</button>
-========
+
 
 
                         <div class="alert alert-danger" role="alert" id="infoBar" style="display:none"></div>
 
                         <button type="submit" class="btn btn-primary">登入</button>
->>>>>>>> 65cf96b3098cc70122d151b999ff15acf4046b32:bookstore/member/login.php
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<<<<<<<< HEAD:bookstore/forum-tt/category-create.php
+
 <?php include './parts/scripts.php' ?>
-========
 
-
-<?php include '../parts/scripts.php' ?>
-
->>>>>>>> 65cf96b3098cc70122d151b999ff15acf4046b32:bookstore/member/login.php
 <script>
     const categoryField = document.querySelector('#category');
     const infoBar = document.querySelector('#infoBar');
