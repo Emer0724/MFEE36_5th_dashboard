@@ -1,9 +1,3 @@
-<?php
-require './part/connect_db.php';
-$sql = "SELECT * FROM `book_info`";
-$stmt = $pdo->query($sql)->fetchALL();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +9,14 @@ $stmt = $pdo->query($sql)->fetchALL();
 </head>
 
 <body>
-    <pre><?= print_r($stmt) ?></pre>
+
+    <form name="form1" method="post" action="upload-test01.php" enctype="multipart/form-data">
+        <input type="file" name="file1">
+        <br>
+        <input type="submit">
+
+
+    </form>
 </body>
 
 </html>
