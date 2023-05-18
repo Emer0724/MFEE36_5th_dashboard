@@ -1,7 +1,7 @@
 <?php
 $pageName = 'login';
 $titla_1 = '登入';
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 ?>
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/aside.php' ?>

@@ -1,6 +1,6 @@
 <?php
 $titla_1 = '新增';
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 require './admin-re.php';
 $sid = isset($_GET['blog_id']) ? intval($_GET['blog_id']) : 0;
 $sid1 = !empty($_GET['sid']) ? intval($_GET['sid']) : 0;

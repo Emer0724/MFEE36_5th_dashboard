@@ -1,5 +1,5 @@
 <?php
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 ?>
 <?php
 # MVC
@@ -220,7 +220,7 @@ if ($totalRows) {
                 </tbody>
             </table>
             <div class="container">
-                <button type="submit" class="btn btn-primary ">新增</button>
+                <button type="submit" class="btn btn-primary" id="leo">新增</button>
 
             </div>
         </div>
@@ -244,9 +244,10 @@ if ($totalRows) {
                 location.href = './market-delete-api.php?ISBN=' + ISBN;
             }
         }
-        document.querySelector('.btn').onclick = add;
+        document.querySelector('#leo').onclick = add;
 
         function add() {
+            console.log(123);
             window.location.href = './market-add.php';
         }
     </script>

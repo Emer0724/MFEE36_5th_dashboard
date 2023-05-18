@@ -1,7 +1,8 @@
 <?php
 # MVC
 $pageName = 'ticket-admin';
-$title = '客服';
+$title_1 = '客服';
+$title_2 = '客服清單';
 require '../parts/connect-db.php';
 
 $perPage = 10; # 每頁最多幾筆

@@ -2,7 +2,7 @@
 $pageName = 'book-comment';
 $title_1 = '書評';
 $title_2 = '書評管理';
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 require './admin-re1.php';
 $perPage = 10; # 每頁最多幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁

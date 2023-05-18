@@ -1,6 +1,6 @@
 <?php
 
-require '../parts/admin-required.php';
+// require '../parts/admin-required.php';
 require '../parts/connect-db.php';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;

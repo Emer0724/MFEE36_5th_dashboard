@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white" href="../pages/index.html">
+                <a class="nav-link text-white" href="../index.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-house"></i>
                     </div>
@@ -21,7 +21,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            <a class="nav-link text-white " href="./member.html">
+                            <a class="nav-link text-white " href="./member/list-admin.php">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-user"></i>
                                 </div>
@@ -34,7 +34,7 @@
             <li class="nav-item">
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./member-server.html">
+                        <a class="nav-link text-white " href="./member/ticket-admin.php">
                             <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-3">客服</span>
@@ -49,11 +49,11 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <a class="nav-link text-white " href="./order.html">
+                            <a class="nav-link text-white " href="../leo/order.php">
                                 <div class="text-white text-center me-2  d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-rectangle-list"></i>
                                 </div>
-                                <span class="nav-link-text ms-1 ">訂單管理</span>
+                                <span class="nav-link-text ms-1 ">商城/訂單管理</span>
                             </a>
                         </button>
                     </h2>
@@ -62,7 +62,7 @@
             <li class="nav-item">
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./order-store.html">
+                        <a class="nav-link text-white " href="../leo/market.php">
                             <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-2">商城</span>
@@ -73,7 +73,19 @@
             </li>
             <li class="nav-item">
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <a class="nav-link text-white " href="./order-promotion.html">
+                    <div class="accordion-body">
+                        <a class="nav-link text-white " href="../leo/order.php">
+                            <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-pencil"></i>
+                                <span class="nav-link-text ms-2">訂單管理</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <a class="nav-link text-white " href="../leo/coupon.php">
                         <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-pencil"></i>
                             <span class="nav-link-text ms-2">促銷與折價券</span>
@@ -102,6 +114,18 @@
                             <div class="text-gray text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-3">二手書清單</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a class="nav-link text-white " href="./used_bs_list.php">
+                            <div class="text-gray text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-pencil"></i>
+                                <span class="nav-link-text ms-3">書況管理</span>
                             </div>
                         </a>
                     </div>

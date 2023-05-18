@@ -1,8 +1,8 @@
 <?php
 // require '../parts/admin-required.php';
 $pageName = 'add';
-$title1 = '會員';
-$title1 = '新增會員';
+$title_1 = '會員管理';
+$title_2 = '新增';
 
 require '../parts/connect-db.php';
 
@@ -70,14 +70,7 @@ require '../parts/connect-db.php';
                             <div class="form-text"></div>
 
                         </div>
-                        <!-- 
-                        <div class="mb-3">
-                            <label for="gender" class="form-label">性別</label>
-                            <input type="text" class="form-control" name="gender" data-required="1">
-                            <div class="form-text"></div>
-                        </div> -->
 
-                        <!--  -->
                         <div class="d-flex">
                             <div class="mb-3 mx-1">
                                 <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="男">

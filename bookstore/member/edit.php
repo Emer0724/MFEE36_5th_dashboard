@@ -1,6 +1,7 @@
 <?php
-require '../parts/admin-required.php';
-$title = '編輯';
+// require '../parts/admin-required.php';
+$title_1 = '會員管理';
+$title_2 = '編輯';
 require '../parts/connect-db.php';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;

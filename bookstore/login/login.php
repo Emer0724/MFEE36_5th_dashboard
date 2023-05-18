@@ -1,7 +1,7 @@
 <?PHP
 $pageName = 'login';
-$tital_1 = '會員登入';
-$tital_2 = '會員登入';
+$title_1 = '會員登入';
+$title_2 = '會員登入';
 require '../parts/connect_db.php';
 
 if (isset($_SESSION['admin'])) {
