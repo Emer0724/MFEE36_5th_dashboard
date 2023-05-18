@@ -27,6 +27,7 @@ if (!empty($_POST['email'])) {
 
 
     $birthday = empty($_POST['birthday']) ? null : $_POST['birthday'];
+    $gender = empty($_POST['gender']) ? null : $_POST['gender'];
 
 
     date_default_timezone_set('Asia/Taipei');
@@ -53,7 +54,7 @@ if (!empty($_POST['email'])) {
             $full_name,
             $_POST['username'],
 
-            $_POST['gender'],
+            $gender,
             $birthday,
             $_POST['mobile'],
             $_POST['email'],

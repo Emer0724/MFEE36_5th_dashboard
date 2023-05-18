@@ -1,6 +1,6 @@
 <?php
 $titla_1 = '編輯';
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 require './admin-re.php';
 $sid = isset($_GET['blog_id']) ? intval($_GET['blog_id']) : 0;
 $sql = " SELECT * FROM blog WHERE blog_id={$sid}";

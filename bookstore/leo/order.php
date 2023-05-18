@@ -1,5 +1,5 @@
 <?php
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 ?>
 <?php
 # MVC

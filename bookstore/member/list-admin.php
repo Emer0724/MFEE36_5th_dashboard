@@ -1,7 +1,8 @@
 <?php
 # MVC
 $pageName = 'list';
-$title = '會員';
+$title_1 = '會員管理';
+$title_2 = '會員清單';
 require '../parts/connect-db.php';
 // require '../user_img.php';
 
@@ -158,7 +159,7 @@ function stringToHslColor($str, $s, $l)
                             </div>
                         </td>
                         <td class='text-center'>
-                            <div class="profile-image">
+                            <div class="profile-image d-flex align-items-center justify-content-center">
                                 <?php
                                 $initial = mb_substr($r['email'], 0, 1, "UTF-8");
                                 $initial = strtoupper($initial);

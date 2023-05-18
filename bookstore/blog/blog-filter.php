@@ -2,7 +2,7 @@
 $pageName = 'blog';
 $titla_1 = '部落格';
 $titla_2 = '部落格管理';
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 require './admin-re.php';
 $perPage = 10; # 每頁最多幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; # 用戶要看第幾頁

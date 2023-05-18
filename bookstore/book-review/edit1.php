@@ -1,6 +1,6 @@
 <?php
 $title_2 = '編輯書評';
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 require './admin-re1.php';
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 $sql = " SELECT * FROM book_comment WHERE sid={$sid}";

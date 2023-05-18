@@ -1,7 +1,8 @@
 <?php
 
 $pageName = 'reply.php';
-$title = '客服回覆';
+$title_1 = '客服';
+$title_2 = '客服回覆';
 
 require '../parts/connect-db.php';
 

@@ -1,6 +1,6 @@
 <?php
 
-require '../parts/db-connect.php';
+require '../parts/connect-db.php';
 
 $sid = isset($_GET['blog_id']) ? intval($_GET['blog_id']) : 0;
 

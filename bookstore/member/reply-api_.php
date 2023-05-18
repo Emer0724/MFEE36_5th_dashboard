@@ -11,6 +11,8 @@ $output = [
 ];
 
 
+date_default_timezone_set('Asia/Taipei');
+$today = date("Y-m-d H:i:s");
 
 if (!empty($_POST['name'])) {
     $isPass = true;
@@ -21,7 +23,7 @@ if (!empty($_POST['name'])) {
         `birthday`, `address`, `created_at`
         ) VALUES (
             ?, ?, ?,
-            ?, ?, NOW()
+            ?, ?, ?
         )";
 
     $stmt = $pdo->prepare($sql);
@@ -33,6 +35,7 @@ if (!empty($_POST['name'])) {
             $_POST['mobile'],
             $birthday,
             $_POST['address'],
+            $today
         ]);
 
         $output['success'] = !!$stmt->rowCount();

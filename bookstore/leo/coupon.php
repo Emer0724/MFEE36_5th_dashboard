@@ -230,7 +230,6 @@ if ($totalRows) {
             <table data-toggle="table" data-sortable="true" data-sort-class="table-active" data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-
                         <th scope="col" data-sortable="true">#</th>
                         <th scope="col" data-sortable="true">優惠券名稱</th>
                         <th scope="col" data-sortable="true">折扣金額</th>
@@ -261,7 +260,7 @@ if ($totalRows) {
                 </tbody>
             </table>
             <div class="container">
-                <button type="submit" class="btn btn-primary ">新增</button>
+                <button type="submit" class="btn btn-primary " id="btn">新增</button>
             </div>
         </div>
     </div>
@@ -284,10 +283,10 @@ if ($totalRows) {
                 location.href = 'coupon-delete-api.php?couponID=' + couponID;
             }
         }
-        document.querySelector('.btn').onclick = add;
+        document.querySelector('#btn').onclick = add;
 
         function add() {
-            window.location.href = './coupon-add.php';
+            window.location.href = 'coupon-add.php';
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
