@@ -225,11 +225,11 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFive">
                             <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                <a class="nav-link text-white " href="./forum.html">
+                                <a class="nav-link text-white " href="./forum-tt/index.php">
                                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i class="fa-solid fa-comments opacity-10"></i>
                                     </div>
-                                    <span class="nav-link-text ms-1">論壇管理</span>
+                                    <span class="nav-link-text ms-1">論壇</span>
                                 </a>
                         </h2>
                     </div>
@@ -237,10 +237,10 @@
                 <li class="nav-item">
                     <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a class="nav-link text-white " href="./forum-notion.html">
+                            <a class="nav-link text-white " href="./forum-tt/index.php">
                                 <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-pencil"></i>
-                                    <span class="nav-link-text ms-3">論壇公告</span>
+                                    <span class="nav-link-text ms-3">論壇管理</span>
                                 </div>
                             </a>
                         </div>
@@ -248,10 +248,32 @@
                 </li>
                 <li class="nav-item">
                     <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                        <a class="nav-link text-white " href="./forum-post.html">
+                        <div class="accordion-body">
+                            <a class="nav-link text-white " href="./forum-tt/category.php">
+                                <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-pencil"></i>
+                                    <span class="nav-link-text ms-3">類別管理</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <a class="nav-link text-white " href="./forum-tt/post.php">
                             <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-3">貼文管理</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <a class="nav-link text-white " href="./forum-tt/comment.php">
+                            <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-pencil"></i>
+                                <span class="nav-link-text ms-3">留言管理</span>
                             </div>
                         </a>
                     </div>

@@ -1,6 +1,11 @@
 <?php
 require "./parts/connection.php";
 ?>
+<?php
+$title_1 = '論壇';
+$title_2 = '新增類別';
+
+?>
 
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/aside.php' ?>
@@ -65,7 +70,7 @@ require "./parts/connection.php";
         categoryField.style.border = '1px solid #CCC';
         categoryField.nextElementSibling.innerHTML = ''
 
-        let isPass = true; 
+        let isPass = true;
 
         if (categoryField.value.length < 2) {
             isPass = false;
@@ -76,9 +81,9 @@ require "./parts/connection.php";
         if (isPass) {
             const fd = new FormData(document.form1);
             fetch('category-create-api.php', {
-                method: 'POST',
-                body: fd, 
-            }).then(r => r.json())
+                    method: 'POST',
+                    body: fd,
+                }).then(r => r.json())
                 .then(obj => {
                     console.log(obj);
                     if (obj.success) {

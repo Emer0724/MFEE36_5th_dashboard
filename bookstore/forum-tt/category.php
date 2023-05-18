@@ -25,10 +25,15 @@ if ($cate_totalRows) {
         header("Location: ?page=$cate_totalPages");
         exit;
     }
-    $cate_sql = "SELECT * FROM forum_category ORDER BY sid "; 
+    $cate_sql = "SELECT * FROM forum_category ORDER BY sid ";
 
     $cate_rows = $pdo->query($cate_sql)->fetchAll();
 }
+
+?>
+<?php
+$title_1 = '論壇';
+$title_2 = '類別管理';
 
 ?>
 <!DOCTYPE html>
@@ -55,18 +60,18 @@ if ($cate_totalRows) {
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
 
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-    
+
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
 
-<?php include('./parts/aside.php') ?>
+    <?php include('./parts/aside.php') ?>
 
 
-<?php include('./parts/navbar.php') ?>
+    <?php include('./parts/navbar.php') ?>
 
 
-<!-- <div class="container">
+    <!-- <div class="container">
     <div class="row">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
@@ -102,14 +107,16 @@ if ($cate_totalRows) {
         </nav>
     </div>
 </div> -->
-<div class="container">
-    <div class="row">
-            <div class="mb-3"><h1>類別管理</h1> </div>     
-            <table data-toggle="table" data-sortable="true"  data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" >
+    <div class="container">
+        <div class="row">
+            <div class="mb-3">
+                <h1>類別管理</h1>
+            </div>
+            <table data-toggle="table" data-sortable="true" data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true">
                 <thead>
                     <tr>
                         <th scope="col" class="text-center" data-sortable="true">類別id</th>
-                        <th scope="col" class="text-center" >類別</th>
+                        <th scope="col" class="text-center">類別</th>
                         <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
                         <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     </tr>
@@ -124,38 +131,38 @@ if ($cate_totalRows) {
                                 <?= $r['category'] ?>
                             </td>
                             <td><a href="category-edit.php?sid=<?= $r['sid'] ?>">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                        </td>
-                        <td><a href="javascript: delete_it(<?= $r['sid'] ?>)">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </a></td>
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
+                            <td><a href="javascript: delete_it(<?= $r['sid'] ?>)">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <div class="py-5">
-           <a href="category-create.php" class="btn btn-secondary fs-5 d-flex justify-content-center align-items-center" style="width: 150px; height:60px;">新增類別</a>    
+            <div class="py-5">
+                <a href="category-create.php" class="btn btn-secondary fs-5 d-flex justify-content-center align-items-center" style="width: 150px; height:60px;">新增類別</a>
+            </div>
         </div>
     </div>
-</div>
 
 
-<?php include './parts/scripts.php' ?>
+    <?php include './parts/scripts.php' ?>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 
-<script>
-    document.querySelector('li.page-item.active a').removeAttribute('href');
+    <script>
+        document.querySelector('li.page-item.active a').removeAttribute('href');
 
-    function delete_it(sid) {
-        if (confirm(`是否要刪除編號為 ${sid} 的資料?`)) {
-            location.href = 'category-delete.php?sid=' + sid;
+        function delete_it(sid) {
+            if (confirm(`是否要刪除編號為 ${sid} 的資料?`)) {
+                location.href = 'category-delete.php?sid=' + sid;
+            }
+
         }
-
-    }
-</script>
-<?php include './parts/html-foot.php' ?>
+    </script>
+    <?php include './parts/html-foot.php' ?>
