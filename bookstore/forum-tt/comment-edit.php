@@ -10,7 +10,7 @@ require "./parts/connection.php";
 <?php
 $sid = isset ($_GET['sid']) ? intval($_GET['sid']):0;
 
-$sql = "SELECT * FROM forum_comment WHERE sid = {$sid}";
+$sql = "SELECT * FROM forum_comment WHERE c_sid = {$sid}";
 
 $r = $pdo->query($sql)->fetch();
 
@@ -23,13 +23,13 @@ $r = $pdo->query($sql)->fetch();
                 <div class="card-body">
                     <h5 class="card-title">留言編輯</h5>
                     <form name="form1" onsubmit="checkForm(event)">
-                    <input type="hidden" name="c_sid" value="<?= $c_sid ?>">
-                    <div class="mb-3">
-                            <label for="comment" class="form-label d-block">留言</label>
-                            <textarea name="comment" id="comment" cols="50" rows="5" ><?= htmlentities($r['comment'])?></textarea>
-                            <div class="form-text"></div>
+                        <input type="hidden" name="c_sid" value="<?= $sid ?>">
+                        <div class="mb-3">
+                                <label for="comment" class="form-label d-block">留言</label>
+                                <textarea name="comment" id="comment" cols="50" rows="5" ><?= htmlentities($r['comment'])?></textarea>
+                                <div class="form-text"></div>
                         </div>
-                        
+                            
                         <div class="alert alert-danger" role="alert" id="infoBar" style="display:none">
                         </div>
                         <button type="submit" class="btn btn-primary">發布</button>

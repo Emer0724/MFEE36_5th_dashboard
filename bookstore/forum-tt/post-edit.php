@@ -33,7 +33,7 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
                             <label for="category" class="form-label d-block">類別</label>
                             <select name="category" id="category">
                                <?php foreach($rows_c as $c):?>
-                                 <option name="category" value="<?=$c['category']?>"><?=$c['category']?></option>
+                                <option name="category" value="<?= $c['category']?>"><?=$c['category']?></option>
                                  <?php endforeach;?>
                             </select>
                             <div class="form-text"></div>
