@@ -47,6 +47,9 @@ require "./parts/connection.php";
     function checkForm(event) {
         event.preventDefault();
             let isPass = true;
+
+
+            
         for (let f of fields) {
             if(!f.value){
             isPass = false;

@@ -25827,13 +25827,13 @@ body:not(.dark-version) .sidenav.bg-transparent .collapse .nav-item .nav-link.ac
   vertical-align: middle;
 }
 
-.table tbody tr:last-child td {
+/* .table tbody tr:last-child td {
   border-width: 0;
 }
 
 .table> :not(:last-child)> :last-child>* {
   border-bottom-color: #f0f2f5;
-}
+} */
 
 .table> :not(:first-child) {
   border-top: 1px solid currentColor;

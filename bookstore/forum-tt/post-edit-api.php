@@ -15,8 +15,7 @@ if ($isPass) {
     
     `category`=?,
     `title`=?,
-    `article`=?,
-    `created`=NOW()
+    `article`=?
     WHERE `sid`=?";
 
     $stmt = $pdo->prepare($sql);

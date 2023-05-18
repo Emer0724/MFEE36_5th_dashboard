@@ -13,7 +13,11 @@ $sid = isset ($_GET['c_sid']) ? intval($_GET['c_sid']):0;
 $sql = "SELECT * FROM forum_comment WHERE c_sid = {$sid}";
 
 $r = $pdo->query($sql)->fetch();
+
+$sql_c = "SELECT * FROM forum WHERE `sid` = {$_GET['sid']} ";
+$rows_c = $pdo->query($sql_c)->fetch();
 ?>
+
 
 <div class="container">
     <div class="row">
@@ -23,6 +27,21 @@ $r = $pdo->query($sql)->fetch();
                     <h5 class="card-title">新增留言</h5>
                     <form name="form1" onsubmit="checkForm(event)">
                        
+                       <div class="mb-3 ">
+                            <label for="sid" class="form-label d-block">貼文id</label>
+                                 <input type="text" name="sid" value="<?=$_GET['sid']?>" readonly>
+                            <div class="form-text"></div>
+                        </div>
+                       <div class="mb-3 ">
+                            <label for="title" class="form-label d-block">標題</label>
+                                 <input type="text" name="title" value="<?=$rows_c['title']?>" readonly>
+                            <div class="form-text"></div>
+                        </div>
+                       <div class="mb-3 ">
+                            <label for="article" class="form-label d-block">內容</label>
+                                 <input type="text" name="article" value="<?=$rows_c['article']?>" readonly>
+                            <div class="form-text"></div>
+                        </div>
                         <div class="mb-3">
                             <label for="comment" class="form-label">留言</label>
                             <input type="text" class="form-control bg-light ps-2" id="comment" name="comment">

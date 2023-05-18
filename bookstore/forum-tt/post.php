@@ -56,6 +56,7 @@ if ($totalRows) {
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
 
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+   
     
 </head>
 
@@ -111,16 +112,17 @@ if ($totalRows) {
 <div class="container">
     <div class="row"> 
             <div class="mb-3 "><h1>貼文管理</h1></div>
-            <table data-toggle="table" data-sortable="true"  data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" class="table small-table">
+            <table data-toggle="table" data-sortable="true"  data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" class="table table-">
                 <thead>
                     <tr>
                         <th scope="col" class="text-center" data-sortable="true">貼文id</th>
-                        <th scope="col" class="text-center" data-sortable="true">會員暱稱</th>
+                        <th scope="col" class="text-center" >會員暱稱</th>
                         <th scope="col" class="text-center" data-sortable="true">類別</th>
-                        <th scope="col" class="text-center" data-sortable="true">標題</th>
-                        <th scope="col" class="text-center" data-sortable="true">內容</th>
+                        <th scope="col" class="text-center" >標題</th>
+                        <th scope="col" class="text-center" >內容</th>
                         <th scope="col" class="text-center" data-sortable="true">建立時間</th>
                         <th scope="col" class="text-center">編輯</i></th>
+                        <th scope="col" class="text-center">留言</i></th>
                         <th scope="col" class="text-center">刪除</i></th>
                     </tr>
                 </thead>
@@ -148,10 +150,16 @@ if ($totalRows) {
                             <td><a href="post-edit.php?sid=<?= $r['sid'] ?>">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                        </td>
-                        <td><a href="javascript: delete_it(<?= $r['sid'] ?>)">
+                            </td>
+                            <td><a href="comment-create.php?sid=<?= $r['sid'] ?>">
+                                留言
+                            </a>
+                            </td>
+                            <td>
+                                <a href="javascript: delete_it(<?= $r['sid'] ?>)">
                                 <i class="fa-solid fa-trash-can"></i>
-                            </a></td>
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -16,8 +16,8 @@ $output = [
 
 
     $sql = "INSERT INTO `forum_comment`(
-        `comment`,`created`
-        ) VALUES (
+        `parent_id`,`comment`,`created`
+        ) VALUES (?,
         ?, NOW()
         )";
 
@@ -25,6 +25,7 @@ $output = [
 
     
         $stmt->execute([
+            $_POST['sid'],
             $_POST['comment']
         ]);
     

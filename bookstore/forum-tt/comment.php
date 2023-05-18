@@ -52,6 +52,7 @@ if ($com_totalRows) {
 
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
     
+    
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
@@ -110,13 +111,13 @@ $com_rows1 = $pdo->query($join_sql)->fetchAll();
 
 <div class="container">
     <div class="mb-3"><h1>留言管理</h1> </div>
-        <table data-toggle="table" data-sortable="true" data-sort-class="table-active" data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" >
+        <table data-toggle="table" data-sortable="true"  data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" >
             <thead>
                 <tr>
                     <th scope="col" class="text-center" data-sortable="true">留言id</th>
-                    <th scope="col" class="text-center" data-sortable="true">留言</th>
-                    <th scope="col" class="text-center" data-sortable="true">標題</th>
-                    <th scope="col" class="text-center" data-sortable="true">內容</th>
+                    <th scope="col" class="text-center" >留言</th>
+                    <th scope="col" class="text-center" >標題</th>
+                    <th scope="col" class="text-center" >內容</th>
                     <th scope="col" class="text-center" data-sortable="true">建立時間</th>
                     <th scope="col" class="text-center" data-sortable="true">貼文id</th>
                     <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
@@ -136,7 +137,7 @@ $com_rows1 = $pdo->query($join_sql)->fetchAll();
                             <?= $r['title'] ?>
                         </td>
                         <td>
-                            <?= $r['article'].'...' ?>
+                            <?= $r['article'] ?>
                         </td>
                         <td>
                             <?= $r['created'] ?>
@@ -155,9 +156,9 @@ $com_rows1 = $pdo->query($join_sql)->fetchAll();
                 <?php endforeach; ?>
             </tbody>
         </table>
-    <div class="py-5">
+    <!-- <div class="py-5">
            <a href="comment-create.php" class="btn btn-secondary fs-5 d-flex justify-content-center align-items-center" style="width: 150px; height:60px;">新增留言</a>    
-    </div>
+    </div> -->
     
 </div>
 

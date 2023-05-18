@@ -105,11 +105,11 @@ if ($cate_totalRows) {
 <div class="container">
     <div class="row">
             <div class="mb-3"><h1>類別管理</h1> </div>     
-            <table data-toggle="table" data-sortable="true" data-sort-class="table-active" data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" >
+            <table data-toggle="table" data-sortable="true"  data-pagination="true" data-search="true" data-show-search-clear-button="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true" >
                 <thead>
                     <tr>
                         <th scope="col" class="text-center" data-sortable="true">類別id</th>
-                        <th scope="col" class="text-center" data-sortable="true">類別</th>
+                        <th scope="col" class="text-center" >類別</th>
                         <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
                         <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     </tr>

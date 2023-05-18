@@ -26,7 +26,7 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">貼文編輯</h5>
-                    <form name="form1" onsubmit="checkForm(event)">
+                    <form name="form1"  onsubmit="checkForm(event)">
                         <input type="hidden" class="form-control bg-light ps-2" id="sid" name="sid" value="<?= htmlentities($r['sid'])?>"readonly>
 
                         <div class="mb-3 ">
@@ -40,12 +40,12 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
                         </div>
                         <div class="mb-3">
                             <label for="title" class="form-label ">標題</label>
-                            <input type="text" class="form-control bg-light ps-2" id="title" name="title" value="<?= htmlentities($r['title'])?>">
+                            <input type="text" class="form-control bg-light ps-2" id="title" name="title" data-required="1" value="<?= htmlentities($r['title'])?>">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
                             <label for="article" class="form-label d-block">內容</label>
-                            <textarea name="article" id="article" cols="50" rows="5" class="bg-light "> <?= htmlentities($r['article'])?></textarea>
+                            <textarea name="article" id="article" cols="50" rows="5" class="bg-light" data-required="1"> <?= htmlentities($r['article'])?></textarea>
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
@@ -75,10 +75,16 @@ $rows_c = $pdo->query($sql_c)->fetchAll();
             f.style.border = '1px solid #ccc';
             f.nextElementSibling.innerHTML = ''
         }
-        titleField.style.border = '1px solid #CCC';
-        titleField.nextElementSibling.innerHTML = ''
 
         let isPass = true;
+
+        for (let f of fields){
+         if (!f.value) {
+                isPass = false;
+                f.style.border = '1px solid red';
+                f.nextElementSibling.innerHTML = '請輸入資料'
+                }
+        }
         if (titleField.value.length < 2) {
             isPass = false;
             titleField.style.border = '1px solid red';
