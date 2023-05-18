@@ -304,7 +304,7 @@ if (empty($r)) {
                             success.style.display = 'block'
                             setTimeout(() => {
                                 success.style.display = 'none'
-                                location.href = "used_list.php"
+                                location.href = "used_list_1.php"
                             }, 2000)
                         } else {
                             danger.style.display = 'block'
