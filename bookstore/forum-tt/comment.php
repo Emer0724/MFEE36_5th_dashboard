@@ -1,6 +1,8 @@
 <?php
 
 require './parts/connection.php';
+$title_1 = '論壇管理';
+$title_2 = '留言管理';
 
 $perPage = 5;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; 
