@@ -1,7 +1,7 @@
 <?php
 require '../parts/connect_db.php';
-
-$tital = '二手書清單';
+$title_1 = '二手書管理';
+$title_2 = '二手書清單';
 
 $select = isset($_GET['select']) ? $_GET['select'] : 'all';
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

@@ -10,10 +10,10 @@ $output = [
 $isPass = true;
 date_default_timezone_set('Asia/Taipei');
 $today = date("Y-m-d H:i:s");
-$suggested_price=empty($_POST['$suggested_price']) ? null : $_POST['$suggested_price'];
-$sale_price=empty($_POST['$sale_price']) ? null : $_POST['$sale_price'];
-$transaction_status=isset($_POST['transaction_status']) ? null :$_POST['transaction_status'];
-$visibility=isset($_POST['visibility']) ? null :$_POST['visibility'];
+$suggested_price = empty($_POST['suggested_price']) ? null : $_POST['suggested_price'];
+$sale_price = empty($_POST['sale_price']) ? null : $_POST['sale_price'];
+$transaction_status = !isset($_POST['transaction_status']) ? null : $_POST['transaction_status'];
+$visibility = !isset($_POST['visibility']) ? null : $_POST['visibility'];
 
 $sql = "UPDATE `used` SET 
 `client_id`= ?,

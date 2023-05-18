@@ -1,7 +1,7 @@
 <?php
 require '../parts/connect_db.php';
-$tital_1 = '二手書管理';
-$tital_2 = '二手書清單';
+$title_1 = '二手書管理';
+$title_2 = '二手書清單';
 
 $select = isset($_GET['select']) ? $_GET['select'] : 'all';
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -15,7 +15,7 @@ if ($select == 'all') {
   $totalPage = ceil($totalAll / $pre_Page);
   $page = $page > $totalPage ? $totalPage : $page;
   $page = $page < 1 ? 1 : $page;
-  $sql = "SELECT a.*,b.name,c.name as mname FROM used as a JOIN book_info as b using(ISBN) join member as c on a.client_id=c.sid where deleted is Null order by serial_id desc  ";
+  $sql = "SELECT a.*,b.name,c.name as mname,d.status_name FROM used as a JOIN book_info as b using(ISBN) join member as c on a.client_id=c.sid left join book_status as d on a.book_status=d.status_id where a.deleted is Null order by serial_id desc  ";
   $stmt = $pdo->query($sql)->fetchAll();
 } else {
   $total = "SELECT count(1) FROM used where review_status={$select} ";
@@ -24,7 +24,7 @@ if ($select == 'all') {
   $totalPage = ceil($totalAll / $pre_Page);
   $page = $page > $totalPage ? $totalPage : $page;
   $page = $page < 1 ? 1 : $page;
-  $sql = "SELECT a.*,b.name,c.name as mname FROM used as a JOIN book_info as b using(ISBN) join member as c on a.client_id=c.sid where review_status={$select} and deleted is Null order by serial_id desc  ";
+  $sql = "SELECT a.*,b.name,c.name as mname ,d.status_name FROM used as a JOIN book_info as b using(ISBN) join member as c on a.client_id=c.sid left join book_status as d on a.book_status=d.status_id where review_status={$select} and a.deleted is Null order by serial_id desc  ";
   $stmt = $pdo->query($sql)->fetchAll();
 }
 
@@ -92,7 +92,7 @@ if ($select == 'all') {
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
 <?php require '../parts/aside.php' ?>
 <?php require '../parts/navbar.php' ?>
-<div class="container-full ms-2 ">
+<div class="container-full ">
 
   <!-- <div class="row "> -->
   <!-- <div class="col-6 "> -->
@@ -126,7 +126,7 @@ if ($select == 'all') {
 
   <!-- </div> -->
   <div class="row ">
-    <form action="used_list_1.php" method="get" class="ms-2 " style="display: inline;" id="form">
+    <form action="used_list_1.php" method="get" class="ms-2" style="display: inline;" id="form">
       <!-- <label for="serial_id">上架流水號:</label>
         <input type="text" name='serial_id' id='serial_id'> -->
       <label for="select">狀態:</label>
@@ -139,7 +139,7 @@ if ($select == 'all') {
       </select>
       <button type="submit" class="btn btn-primary" style="display:none" id='button'>篩選</button>
     </form>
-    <table class="table order-table" data-toggle="table" data-search="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-pagination-switch="true" data-pagination="true" data-toolbar="form" data-resizable="true" data-sort-class data-id-field="id" id="table">
+    <table class="table order-table" data-toggle="table" data-search="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-pagination-switch="true" data-pagination="true" data-toolbar="form" data-resizable="true" data-id-field="id" id="table">
       <!-- <input type="search" class="light-table-filter " data-table="order-table" placeholder="請輸入關鍵字" style="width: 200px;"> -->
       <thead>
         <tr>
@@ -169,17 +169,7 @@ if ($select == 'all') {
             <td scope="col" class='text-center'><?= $r['mname'] ?></td>
             <td scope="col" class='text-center'><?= $r['ISBN'] ?></td>
             <!-- <td scope="col" class='text-center'><?= $r['name'] ?></td> -->
-            <td scope="col" class='text-center'><?php if ($r['book_status'] == 'A') {
-                                                  echo '全新';
-                                                } else if ($r['book_status'] == 'B') {
-                                                  echo '近全新';
-                                                } else if ($r['book_status'] == 'C') {
-                                                  echo '良好';
-                                                } else if ($r['book_status'] == 'D') {
-                                                  echo '普通';
-                                                } else if ($r['book_status'] == 'E') {
-                                                  echo '差強人意';
-                                                } ?>
+            <td scope="col" class='text-center'><?= $r['status_name'] ?></td>
             <td scope="col" class='text-center'><?= $r['note'] ?></td>
             <td scope="col" class='text-center'><?php if ($r['transaction_status'] == '1') {
                                                   echo '待售中';
