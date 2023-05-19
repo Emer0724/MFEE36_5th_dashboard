@@ -1,7 +1,7 @@
 <?php
 $pageName = 'blog';
-$titla_1 = '部落格';
-$titla_2 = '部落格管理';
+$title_1 = '部落格';
+$title_2 = '部落格管理';
 require '../parts/connect-db.php';
 require './admin-re.php';
 $perPage = 10; # 每頁最多幾筆

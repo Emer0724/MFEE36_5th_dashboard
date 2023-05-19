@@ -98,7 +98,7 @@ require '../parts/connect-db.php';
                     }
                     setTimeout(() => {
                         infoBar.style.display = 'none';
-                        window.location.replace('text.php')
+                        window.location.replace('../index.php')
                     }, 2000);
                 })
                 .catch(ex => {

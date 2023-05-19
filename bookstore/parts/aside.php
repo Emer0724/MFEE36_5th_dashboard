@@ -139,7 +139,7 @@
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-rectangle-list"></i>
                                 </div>
-                                <span class="nav-link-text ms-1 ">部落格管理</span>
+                                <span class="nav-link-text ms-1 ">部落格書評管理</span>
                             </a>
                         </button>
                     </h2>
@@ -148,7 +148,7 @@
             <li class="nav-item">
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./blog-check.html">
+                        <a class="nav-link text-white " href="../book-review/book-review.php">
                             <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-3">書評管理</span>
@@ -159,10 +159,10 @@
             </li>
             <li class="nav-item">
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                    <a class="nav-link text-white " href="./blog-filter.html">
+                    <a class="nav-link text-white " href="../blog/blog-filter.php">
                         <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-pencil"></i>
-                            <span class="nav-link-text ms-3">過濾清單</span>
+                            <span class="nav-link-text ms-3">部落格管理</span>
                         </div>
                     </a>
                 </div>

@@ -1,5 +1,6 @@
 <?php
-$title_1 = '新增';
+$title_1 = '書評';
+$title_2 = '書評新增';
 require '../parts/connect-db.php';
 require './admin-re1.php';
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;

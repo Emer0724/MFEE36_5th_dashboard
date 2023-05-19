@@ -1,4 +1,5 @@
 <?php
+$title_1 = '書評';
 $title_2 = '編輯書評';
 require '../parts/connect-db.php';
 require './admin-re1.php';

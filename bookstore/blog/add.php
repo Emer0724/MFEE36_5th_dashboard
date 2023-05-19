@@ -1,5 +1,6 @@
 <?php
-$titla_1 = '新增';
+$title_1 = '部落格';
+$title_2 = '部落格新增';
 require '../parts/connect-db.php';
 require './admin-re.php';
 $sid = isset($_GET['blog_id']) ? intval($_GET['blog_id']) : 0;
