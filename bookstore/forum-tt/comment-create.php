@@ -3,6 +3,11 @@ require "./parts/connection.php";
 $title_1 = '論壇管理';
 $title_2 = '新增留言';
 ?>
+<?php
+$title_1 = '論壇';
+$title_2 = '新增留言';
+
+?>
 
 <?php include('./parts/html-head.php') ?>
 
@@ -10,7 +15,7 @@ $title_2 = '新增留言';
 
 <?php include('./parts/navbar.php') ?>
 <?php
-$sid = isset ($_GET['c_sid']) ? intval($_GET['c_sid']):0;
+$sid = isset($_GET['c_sid']) ? intval($_GET['c_sid']) : 0;
 
 $sql = "SELECT * FROM forum_comment WHERE c_sid = {$sid}";
 
@@ -28,20 +33,20 @@ $rows_c = $pdo->query($sql_c)->fetch();
                 <div class="card-body">
                     <h5 class="card-title">新增留言</h5>
                     <form name="form1" onsubmit="checkForm(event)">
-                       
-                       <div class="mb-3 ">
+
+                        <div class="mb-3 ">
                             <label for="sid" class="form-label d-block">貼文id</label>
-                                 <input type="text" name="sid" value="<?=$_GET['sid']?>" readonly>
+                            <input type="text" name="sid" value="<?= $_GET['sid'] ?>" readonly>
                             <div class="form-text"></div>
                         </div>
-                       <div class="mb-3 ">
+                        <div class="mb-3 ">
                             <label for="title" class="form-label d-block">標題</label>
-                                 <input type="text" name="title" value="<?=$rows_c['title']?>" readonly>
+                            <input type="text" name="title" value="<?= $rows_c['title'] ?>" readonly>
                             <div class="form-text"></div>
                         </div>
-                       <div class="mb-3 ">
+                        <div class="mb-3 ">
                             <label for="article" class="form-label d-block">內容</label>
-                                 <input type="text" name="article" value="<?=$rows_c['article']?>" readonly>
+                            <input type="text" name="article" value="<?= $rows_c['article'] ?>" readonly>
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
@@ -85,9 +90,9 @@ $rows_c = $pdo->query($sql_c)->fetch();
         if (isPass) {
             const fd = new FormData(document.form1);
             fetch('comment-create-api.php', {
-                method: 'POST',
-                body: fd, 
-            }).then(r => r.json())
+                    method: 'POST',
+                    body: fd,
+                }).then(r => r.json())
                 .then(obj => {
                     console.log(obj);
                     if (obj.success) {
@@ -98,7 +103,7 @@ $rows_c = $pdo->query($sql_c)->fetch();
                         infoBar.style.display = 'block';
                         setTimeout(() => {
                             location.href = 'comment.php';
-                    }, 2000);
+                        }, 2000);
 
                     } else {
                         infoBar.classList.remove('alert-success')

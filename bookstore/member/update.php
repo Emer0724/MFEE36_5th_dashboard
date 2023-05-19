@@ -9,10 +9,10 @@ $sql = " UPDATE `member` SET`status`=?, `updated`=? WHERE sid={$sid}";
 date_default_timezone_set('Asia/Taipei');
 $today = date("Y-m-d H:i:s");
 
-$stmt=$pdo->prepare($sql);
+$stmt = $pdo->prepare($sql);
 $stmt->execute([
-''
-])
+    ''
+]);
 
 $comeFrom = 'list-admin.php';
 if (!empty($_SERVER['HTTP_REFERER'])) {

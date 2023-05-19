@@ -21,7 +21,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            <a class="nav-link text-white " href="./member/list-admin.php">
+                            <a class="nav-link text-white " href="#">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-user"></i>
                                 </div>
@@ -34,12 +34,23 @@
             <li class="nav-item">
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./member/ticket-admin.php">
+                        <a class="nav-link text-white " href="../member/list-admin.php">
+                            <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-pencil"></i>
+                                <span class="nav-link-text ms-3">會員清單</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a class="nav-link text-white " href="../member/ticket-admin.php">
                             <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-3">客服</span>
                             </div>
-
                         </a>
                     </div>
                 </div>
@@ -49,7 +60,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <a class="nav-link text-white " href="../leo/order.php">
+                            <a class="nav-link text-white " href="#">
                                 <div class="text-white text-center me-2  d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-rectangle-list"></i>
                                 </div>
@@ -98,7 +109,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <a class="nav-link text-white " href="./二手書/used_list.php">
+                            <a class="nav-link text-white " href="#">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-book-open"></i>
                                 </div>
@@ -110,7 +121,7 @@
             <li class="nav-item">
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./used_list_1.php">
+                        <a class="nav-link text-white " href="../used/used_list_1.php">
                             <div class="text-gray text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-3">二手書清單</span>
@@ -122,7 +133,7 @@
             <li class="nav-item">
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./used_bs_list.php">
+                        <a class="nav-link text-white " href="../used/used_bs_list.php">
                             <div class="text-gray text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-3">書況管理</span>
@@ -171,11 +182,11 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFive">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                            <a class="nav-link text-white " href="./forum.html">
+                            <a class="nav-link text-white " href="#">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-comments opacity-10"></i>
                                 </div>
-                                <span class="nav-link-text ms-1">論壇管理</span>
+                                <span class="nav-link-text ms-1">論壇</span>
                             </a>
                     </h2>
                 </div>
@@ -183,10 +194,10 @@
             <li class="nav-item">
                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="./forum-notion.html">
+                        <a class="nav-link text-white " href="../forum-tt/index.php">
                             <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
-                                <span class="nav-link-text ms-3">論壇公告</span>
+                                <span class="nav-link-text ms-3">論壇管理</span>
                             </div>
                         </a>
                     </div>
@@ -194,10 +205,32 @@
             </li>
             <li class="nav-item">
                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                    <a class="nav-link text-white " href="./forum-post.html">
+                    <div class="accordion-body">
+                        <a class="nav-link text-white " href="../forum-tt/category.php">
+                            <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-pencil"></i>
+                                <span class="nav-link-text ms-3">類別管理</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                    <a class="nav-link text-white " href="./forum-tt/post.php">
                         <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-pencil"></i>
                             <span class="nav-link-text ms-3">貼文管理</span>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                    <a class="nav-link text-white " href="./forum-tt/comment.php">
+                        <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-pencil"></i>
+                            <span class="nav-link-text ms-3">留言管理</span>
                         </div>
                     </a>
                 </div>

@@ -3,6 +3,11 @@ require "./parts/connection.php";
 $title_1 = '論壇管理';
 $title_2 = '編輯類別';
 ?>
+<?php
+$title_1 = '論壇';
+$title_2 = '編輯類別';
+
+?>
 
 <?php include('./parts/html-head.php') ?>
 
@@ -10,7 +15,7 @@ $title_2 = '編輯類別';
 
 <?php include('./parts/navbar.php') ?>
 <?php
-$sid = isset ($_GET['sid']) ? intval($_GET['sid']):0;
+$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 
 $sql = "SELECT * FROM forum_category WHERE sid = {$sid}";
 
@@ -27,7 +32,7 @@ $r = $pdo->query($sql)->fetch();
                         <div class="mb-3">
                             <label for="category" class="form-label">category</label>
                             <input type="hidden" name="sid" value="<?= $sid ?>">
-                            <input type="text" class="form-control bg-light ps-2" id="category" name="category" value="<?= htmlentities($r['category'])?>">
+                            <input type="text" class="form-control bg-light ps-2" id="category" name="category" value="<?= htmlentities($r['category']) ?>">
                             <div class="form-text"></div>
                         </div>
                         <div class="alert alert-danger" role="alert" id="infoBar" style="display:none">
@@ -55,7 +60,7 @@ $r = $pdo->query($sql)->fetch();
         categoryField.style.border = '1px solid #CCC';
         categoryField.nextElementSibling.innerHTML = ''
 
-        let isPass = true; 
+        let isPass = true;
         if (categoryField.value.length < 2) {
             isPass = false;
             categoryField.style.border = '1px solid red';
@@ -63,11 +68,11 @@ $r = $pdo->query($sql)->fetch();
         }
 
         if (isPass) {
-            const fd = new FormData(document.form1); 
+            const fd = new FormData(document.form1);
             fetch('category-edit-api.php', {
-                method: 'POST',
-                body: fd, 
-            }).then(r => r.json())
+                    method: 'POST',
+                    body: fd,
+                }).then(r => r.json())
                 .then(obj => {
                     console.log(obj);
                     if (obj.success) {
@@ -99,7 +104,7 @@ $r = $pdo->query($sql)->fetch();
                     }, 2000);
                 })
 
-        } 
+        }
     }
 </script>
 <?php include './parts/html-foot.php' ?>

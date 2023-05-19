@@ -3,6 +3,11 @@ require "./parts/connection.php";
 $title_1 = '論壇管理';
 $title_2 = '新增類別';
 ?>
+<?php
+$title_1 = '論壇';
+$title_2 = '新增類別';
+
+?>
 
 
 <?php include '../parts/html-head.php' ?>
@@ -68,7 +73,7 @@ $title_2 = '新增類別';
         categoryField.style.border = '1px solid #CCC';
         categoryField.nextElementSibling.innerHTML = ''
 
-        let isPass = true; 
+        let isPass = true;
 
         if (categoryField.value.length < 2) {
             isPass = false;
@@ -79,9 +84,9 @@ $title_2 = '新增類別';
         if (isPass) {
             const fd = new FormData(document.form1);
             fetch('category-create-api.php', {
-                method: 'POST',
-                body: fd, 
-            }).then(r => r.json())
+                    method: 'POST',
+                    body: fd,
+                }).then(r => r.json())
                 .then(obj => {
                     console.log(obj);
                     if (obj.success) {

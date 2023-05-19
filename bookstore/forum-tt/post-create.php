@@ -4,6 +4,12 @@ $title_1 = '論壇管理';
 $title_2 = '編輯貼文';
 ?>
 
+<?php
+$title_1 = '論壇';
+$title_2 = '新增貼文';
+
+?>
+
 <?php include('./parts/html-head.php') ?>
 
 <?php include('./parts/aside.php') ?>
@@ -48,18 +54,18 @@ $title_2 = '編輯貼文';
 
     function checkForm(event) {
         event.preventDefault();
-            let isPass = true;
+        let isPass = true;
 
 
-            
+
         for (let f of fields) {
-            if(!f.value){
-            isPass = false;
-            f.style.border = '1px solid red';
-            f.nextElementSibling.innerHTML = '請填入資料'
-         }else{
-            f.style.border ='1px solid #CCC';
-         }
+            if (!f.value) {
+                isPass = false;
+                f.style.border = '1px solid red';
+                f.nextElementSibling.innerHTML = '請填入資料'
+            } else {
+                f.style.border = '1px solid #CCC';
+            }
         };
 
         if (titleField.value.length < 2) {
@@ -71,9 +77,9 @@ $title_2 = '編輯貼文';
         if (isPass) {
             const fd = new FormData(document.form1);
             fetch('post-create-api.php', {
-                method: 'POST',
-                body: fd, 
-            }).then(r => r.json())
+                    method: 'POST',
+                    body: fd,
+                }).then(r => r.json())
                 .then(obj => {
                     console.log(obj);
                     if (obj.success) {
@@ -84,8 +90,8 @@ $title_2 = '編輯貼文';
                         infoBar.style.display = 'block';
                         setTimeout(() => {
                             location.href = 'post.php';
-                    }, 2000);
-                        
+                        }, 2000);
+
 
                     } else {
                         infoBar.classList.remove('alert-success')
@@ -108,7 +114,7 @@ $title_2 = '編輯貼文';
                     }, 2000);
                 })
 
-        } 
+        }
 
 
     }

@@ -15,7 +15,7 @@ $stmt->execute([
     $deleted,
     $serial_id,
 ]);
-$comeFrom = "used_list.php";
+$comeFrom = "used_list_1.php";
 if (!empty($_SERVER['HTTP_REFERER'])) {
     $comeFrom = $_SERVER['HTTP_REFERER'];
 };
