@@ -19,13 +19,9 @@ $t_sql = "SELECT COUNT(1) FROM member";
 // $t_sql = "SELECT a.*, b.sub_total from member as a left join (select client_id, sum(price)as sub_total from orders GROUP by client_id) as b on a.sid=b.client_id";
 
 
-/////////////////////////////////
 $sqlStatusEmpty = sprintf("SELECT * FROM member WHERE (status = '' OR status IS NULL) AND sid IS NOT NULL ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
 
 $rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
-
-///////////////////////////////// 
-
 
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; # 總筆數
 $totalPages = ceil($totalRows / $perPage); # 總頁數
@@ -61,8 +57,9 @@ function stringToHslColor($str, $s, $l)
 // $rowsAll = $pdo->query($sqlAll)->fetchAll();
 
 // Query for members with empty status where id is not NULL
-// $sqlStatusEmpty = sprintf("SELECT * FROM member WHERE status = '' AND sid IS NOT NULL ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-$rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
+// $sqlStatusEmpty = sprintf("SELECT * FROM member WHERE (status = '' OR status IS NULL) AND sid IS NOT NULL ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+
+// $rowsStatusEmpty = $pdo->query($sqlStatusEmpty)->fetchAll();
 
 // $t_sqlAll = "SELECT COUNT(1) FROM member WHERE sid IS NOT NULL";
 // $t_sqlStatusEmpty = "SELECT COUNT(1) FROM member WHERE status = '' AND sid IS NOT NULL";

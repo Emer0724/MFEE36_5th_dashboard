@@ -53,9 +53,8 @@ require '../parts/connect-db.php';
 
                         <div class="mb-3">
                             <label for="password" class="form-label"><span style="color:red">*</span>密碼</label>
-                            <input class="form-control" id="password" name="password" data-required="1" maxlength="50"></input>
+                            <input type="password" class="form-control" id="password" name="password" data-required="1" maxlength="50"></input>
                             <div class="form-text"></div>
-
                         </div>
                         <!-- <div class="mb-3">
                             <label for="password-re" class="form-label"><span style="color:red">*</span>再次輸入密碼</label>
@@ -133,7 +132,102 @@ require '../parts/connect-db.php';
 
 
 <?php include '../parts/scripts.php' ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    const nameField = document.querySelector('#fill');
+    const infoBar = document.querySelector('#infoBar');
+    const emailField = document.querySelector('input[name="email"]');
+    // 取得必填欄位
+    const fields = document.querySelectorAll('form *[data-required="1"]');
+
+    function checkForm(event) {
+        event.preventDefault();
+
+        for (let f of fields) {
+            f.style.border = '1px solid #ccc';
+            f.nextElementSibling.innerHTML = '';
+        }
+        nameField.style.border = '1px solid #CCC';
+        nameField.nextElementSibling.innerHTML = '';
+
+        let isPass = true; // 預設值是通過的
+
+        // 檢查必填欄位
+        for (let f of fields) {
+            if (!f.value) {
+                isPass = false;
+                f.style.border = '1px solid red';
+                f.nextElementSibling.innerHTML = '請填入資料'
+            }
+        }
+
+        if (isPass) {
+            const fd = new FormData(document.form1); // 沒有外觀的表單
+
+            fetch('add-api.php', {
+                    method: 'POST',
+                    body: fd, // Content-Type 省略, multipart/form-data
+                }).then(r => r.json())
+                .then(obj => {
+                    console.log(obj);
+                    if (obj.success) {
+
+                        infoBar.classList.remove('alert-danger');
+                        infoBar.classList.add('alert-success');
+                        infoBar.innerHTML = '新增成功';
+                        infoBar.style.display = 'block';
+
+                    } else {
+                        infoBar.classList.remove('alert-success');
+                        infoBar.classList.add('alert-danger');
+                        infoBar.innerHTML = obj.error.email ? obj.error.email : '新增失敗';
+                        infoBar.style.display = 'block';
+                    }
+                    setTimeout(() => {
+                        infoBar.style.display = 'none';
+                    }, 2000);
+                })
+                .catch(ex => {
+                    console.log(ex);
+                    infoBar.classList.remove('alert-success');
+                    infoBar.classList.add('alert-danger');
+                    infoBar.innerHTML = '新增發生錯誤';
+                    infoBar.style.display = 'block';
+                    setTimeout(() => {
+                        infoBar.style.display = 'none';
+                    }, 2000);
+                })
+
+        } else {
+            // 沒通過檢查
+        }
+    }
+
+    // Add an event listener for email field
+    $(emailField).on('input', function() {
+        let email = $(this).val();
+        $.ajax({
+            url: 'check-email.php',
+            type: 'post',
+            data: {
+                email: email
+            },
+            success: function(response) {
+                if (response == 'taken') {
+                    emailField.style.border = '1px solid red';
+                    emailField.nextElementSibling.innerHTML = 'Email 已存在';
+                } else if (response == 'not_taken') {
+                    emailField.style.border = '1px solid #ccc';
+                    emailField.nextElementSibling.innerHTML = '';
+                }
+            }
+        });
+    });
+</script>
+
+
+<!-- <script>
     const nameField = document.querySelector('#fill');
     const infoBar = document.querySelector('#infoBar');
     // 取得必填欄位
@@ -164,11 +258,7 @@ require '../parts/connect-db.php';
         }
 
 
-        // if (nameField.value.length < 1) {
-        //     isPass = false;
-        //     nameField.style.border = '1px solid red';
-        //     nameField.nextElementSibling.innerHTML = '請輸入至少一個字';
-        // }
+
 
         if (isPass) {
             const fd = new FormData(document.form1); // 沒有外觀的表單
@@ -215,6 +305,101 @@ require '../parts/connect-db.php';
 
 
     }
+</script> -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    const nameField = document.querySelector('#fill');
+    const infoBar = document.querySelector('#infoBar');
+    const emailField = document.querySelector('input[name="email"]');
+    // 取得必填欄位
+    const fields = document.querySelectorAll('form *[data-required="1"]');
+
+    function checkForm(event) {
+        event.preventDefault();
+
+        for (let f of fields) {
+            f.style.border = '1px solid #ccc';
+            f.nextElementSibling.innerHTML = '';
+        }
+        nameField.style.border = '1px solid #CCC';
+        nameField.nextElementSibling.innerHTML = '';
+
+        let isPass = true; // 預設值是通過的
+
+        // 檢查必填欄位
+        for (let f of fields) {
+            if (!f.value) {
+                isPass = false;
+                f.style.border = '1px solid red';
+                f.nextElementSibling.innerHTML = '請填入資料'
+            }
+        }
+
+        if (isPass) {
+            const fd = new FormData(document.form1); // 沒有外觀的表單
+
+            fetch('add-api.php', {
+                    method: 'POST',
+                    body: fd, // Content-Type 省略, multipart/form-data
+                }).then(r => r.json())
+                .then(obj => {
+                    console.log(obj);
+                    if (obj.success) {
+
+                        infoBar.classList.remove('alert-danger');
+                        infoBar.classList.add('alert-success');
+                        infoBar.innerHTML = '新增成功';
+                        infoBar.style.display = 'block';
+
+                    } else {
+                        infoBar.classList.remove('alert-success');
+                        infoBar.classList.add('alert-danger');
+                        infoBar.innerHTML = obj.error.email ? obj.error.email : '新增失敗';
+                        infoBar.style.display = 'block';
+                    }
+                    setTimeout(() => {
+                        infoBar.style.display = 'none';
+                    }, 2000);
+                })
+                .catch(ex => {
+                    console.log(ex);
+                    infoBar.classList.remove('alert-success');
+                    infoBar.classList.add('alert-danger');
+                    infoBar.innerHTML = '新增發生錯誤';
+                    infoBar.style.display = 'block';
+                    setTimeout(() => {
+                        infoBar.style.display = 'none';
+                    }, 2000);
+                })
+
+        } else {
+            // 沒通過檢查
+        }
+    }
+
+    // Add an event listener for email field
+    $(emailField).on('input', function() {
+        let email = $(this).val();
+        $.ajax({
+            url: 'check-email.php',
+            type: 'post',
+            data: {
+                email: email
+            },
+            success: function(response) {
+                if (response == 'taken') {
+                    emailField.style.border = '1px solid red';
+                    emailField.nextElementSibling.innerHTML = 'Email 已存在';
+                } else if (response == 'not_taken') {
+                    emailField.style.border = '1px solid #ccc';
+                    emailField.nextElementSibling.innerHTML = '';
+                }
+            }
+        });
+    });
 </script>
+
 
 <?php include '../parts/html-foot.php' ?>
