@@ -1,5 +1,5 @@
 <?php
-require '../parts/connect-db.php';
+require '../parts/db-connect.php';
 ?>
 <?php
 # MVC
@@ -220,7 +220,7 @@ if ($totalRows) {
                 </tbody>
             </table>
             <div class="container">
-                <button type="submit" class="btn btn-primary" id="leo">新增</button>
+                <button type="submit" class="btn btn-primary">新增</button>
 
             </div>
         </div>
@@ -237,14 +237,14 @@ if ($totalRows) {
     require '../parts/scripts.php';
     ?>
     <script>
-        document.querySelector('li.page-item.active a').removeAttribute('href');
+        // document.querySelector('li.page-item.active a').removeAttribute('href');
 
         function delete_it(ISBN) {
             if (confirm(`是否要刪除編號為 ${ISBN} 的資料?`)) {
                 location.href = './market-delete-api.php?ISBN=' + ISBN;
             }
         }
-        document.querySelector('#leo').onclick = add;
+        document.querySelector('.btn').onclick = add;
 
         function add() {
             console.log(123);

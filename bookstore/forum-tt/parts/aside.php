@@ -1,7 +1,7 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="./index.html ">
+        <a class="navbar-brand m-0" href="../index.php">
             <img src="./assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold text-white">book書易</span>
         </a>
@@ -134,7 +134,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFour">
                         <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            <a class="nav-link text-white " href="../blog/blog-filter.php">
+                            <a class="nav-link text-white " href="./blog./blog.html">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-rectangle-list"></i>
                                 </div>
@@ -144,28 +144,26 @@
                     </h2>
                 </div>
             </li>
-            <!--部落格待確認-->
-            <li class="nav-item">
-                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                    <a class="nav-link text-white " href="../bookstore/blog/blog-filter.php">
-                        <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-pencil"></i>
-                            <span class="nav-link-text ms-3">部落格管理</span>
-                        </div>
-                    </a>
-                </div>
-            </li>
-
             <li class="nav-item">
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link text-white " href="../bookstore/book-review/book-review.php">
+                        <a class="nav-link text-white " href="../book-review/book-review.php">
                             <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="nav-link-text ms-3">書評管理</span>
                             </div>
                         </a>
                     </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <a class="nav-link text-white " href="../blog/blog-filter.php">
+                        <div class="text-white text-center me-2 px-4 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-pencil"></i>
+                            <span class="nav-link-text ms-3">部落格管理</span>
+                        </div>
+                    </a>
                 </div>
             </li>
             <li class="nav-item">

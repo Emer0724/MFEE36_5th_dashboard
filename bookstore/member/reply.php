@@ -23,7 +23,7 @@ $updated = date("Y-m-d H:i:s");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['comment'])) {
         $comment = $_POST['comment'];
-        $username = $_SESSION['username']; // 使用在 session 中儲存的 username
+        $username = $_SESSION['admin']['username']; // 使用在 session 中儲存的 username
 
         // 儲存回覆到 reply 欄位
         $stmt = $pdo->prepare("UPDATE ticket SET reply = :reply, updated_by = :updated_by, updated = CURRENT_TIMESTAMP WHERE ticket_id = :ticket_id");

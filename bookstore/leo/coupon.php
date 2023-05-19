@@ -256,11 +256,10 @@ if ($totalRows) {
                                 </a></td>
                         </tr>
                     <?php endforeach; ?>
-
                 </tbody>
             </table>
             <div class="container">
-                <button type="submit" class="btn btn-primary " id="btn">新增</button>
+                <button type="submit" class="btn btn-primary">新增</button>
             </div>
         </div>
     </div>
@@ -276,20 +275,20 @@ if ($totalRows) {
     require '../parts/scripts.php';
     ?>
     <script>
-        document.querySelector('li.page-item.active a').removeAttribute('href');
+        // document.querySelector('li.page-item.active a').removeAttribute('href');
 
         function delete_it(couponID) {
             if (confirm(`是否要刪除編號為 ${couponID} 的資料?`)) {
                 location.href = 'coupon-delete-api.php?couponID=' + couponID;
             }
         }
-        document.querySelector('#btn').onclick = add;
+        document.querySelector('.btn').onclick = add;
 
         function add() {
             window.location.href = 'coupon-add.php';
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src=" https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>

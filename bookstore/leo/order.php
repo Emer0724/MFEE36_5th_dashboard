@@ -1,5 +1,5 @@
 <?php
-require '../parts/connect-db.php';
+require '../parts/db-connect.php';
 ?>
 <?php
 # MVC
@@ -200,9 +200,7 @@ if ($totalRows) {
         <tbody>
           <?php foreach ($rows as $r) : ?>
             <tr>
-              <td><a href="javascript: delete_it(<?= $r['order_id'] ?>)">
-                  <i class="fa-solid fa-trash-can"></i>
-                </a></td>
+
               <td><?= $r['order_id'] ?></td>
               <td><?= $r['client_id'] ?></td>
               <td><?= $r['created'] ?></td>
@@ -211,7 +209,10 @@ if ($totalRows) {
               <td><?= $r['price'] ?></td>
               <td><a href="order-edit.php?sid=<?= $r['order_id'] ?>">
                   <i class="fa-solid fa-pen-to-square"></i>
-                </a>
+              <td><a href="javascript: delete_it(<?= $r['order_id'] ?>)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </a></td>
+              </a>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -237,7 +238,7 @@ if ($totalRows) {
   require '../parts/scripts.php';
   ?>
   <script>
-    document.querySelector('li.page-item.active a').removeAttribute('href');
+    // document.querySelector('li.page-item.active a').removeAttribute('href');
 
     function delete_it(order_id) {
       if (confirm(`是否要刪除編號為 ${order_id} 的資料?`)) {
