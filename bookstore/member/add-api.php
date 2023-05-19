@@ -16,6 +16,21 @@ $output = [
 if (!empty($_POST['email'])) {
     $isPass = true;
 
+    $email = trim($_POST['email']);
+    $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (empty($email)) {
+        $isPass = false;
+        $output['error']['email'] = 'Email 格式不正確';
+    } else {
+        // 檢查 email 是否已存在
+        $email_check = $pdo->prepare('SELECT * FROM member WHERE email = ?');
+        $email_check->execute([$email]);
+        if ($email_check->rowCount() > 0) {
+            $isPass = false;
+            $output['error']['email'] = 'Email 已存在';
+        }
+    }
+
 
     # TODO: 檢查欄位資料
     $email = trim($_POST['email']); # 去掉頭尾的空白
