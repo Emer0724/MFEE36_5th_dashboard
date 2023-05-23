@@ -35,7 +35,7 @@ if (!empty($_POST['name'])) {
     `start`=?,
     `end`=?,
     `period`=null    
-    WHERE `name`=? ";
+    WHERE `couponID`=? ";
 
     $stmt = $pdo->prepare($sql);
 
@@ -45,7 +45,7 @@ if (!empty($_POST['name'])) {
             $_POST['amount'],
             $_POST['start'],
             $_POST['end'],
-            $_POST['name'],
+            $_POST['sid'],
         ]);
 
         $output['success'] = !!$stmt->rowCount();

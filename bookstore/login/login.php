@@ -5,7 +5,7 @@ $title_2 = '會員登入';
 require '../parts/connect_db.php';
 
 if (isset($_SESSION['admin'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 ?>
@@ -94,7 +94,7 @@ if (isset($_SESSION['admin'])) {
                         infoBar.innerHTML = '登入成功'
                         infoBar.style.display = 'block';
                         setTimeout(() => {
-                            location.href = 'index.php';
+                            location.href = '../index.php';
                         }, 2000);
                     } else {
                         infoBar.classList.remove('alert-success');

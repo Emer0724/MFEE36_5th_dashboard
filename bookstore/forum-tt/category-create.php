@@ -20,12 +20,6 @@ $title_2 = '新增類別';
 </style>
 
 
-<?php include('./parts/html-head.php') ?>
-
-<?php include('./parts/aside.php') ?>
-
-<?php include('./parts/navbar.php') ?>
-
 <div class="container">
     <div class="row">
         <div class="col-6">
@@ -47,8 +41,7 @@ $title_2 = '新增類別';
 
                         <div class="alert alert-danger" role="alert" id="infoBar" style="display:none"></div>
 
-                        <button type="submit" class="btn btn-primary">登入</button>
-
+                       
                     </form>
                 </div>
             </div>

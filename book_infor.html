@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book</title>
+  </head>
+  <body>
+    <label for="ISBN">ISBN:</label>
+    <textarea id="ISBN"></textarea>
+    <p>輸入格式為:ISBN,ISBN 請用,分開</p>
+    <br />
+    <button id="search">搜尋</button>
+    <table id="show"></table>
+    <script>
+      let search = document.getElementById("search");
+      search.addEventListener("click", () => {
+        let ISBN_all = document.getElementById("ISBN").value;
+        let ISBN = ISBN_all.split(",");
+        let book_text = "";
+        let show = document.getElementById("show");
+
+        console.log(ISBN);
+        let book_info = {};
+
+        ISBN.forEach((ISBN) => {
+          fetch(
+            `https://www.googleapis.com/books/v1/volumes?q=isbn:${ISBN}&qt=lang_switch&lang=zh-tw`
+          )
+            .then((r) => {
+              return r.json();
+            })
+            .then((rs) => {
+              book_info = rs.items[0];
+              book_text += `<tr><td>${ISBN}</td><td>${book_info.volumeInfo.title}:${book_info.volumeInfo.subtitle}</td><br><td>${book_info.volumeInfo.imageLinks.smallThumbnail}</td><br><td>${book_info.volumeInfo.authors}</td><br><td>${book_info.volumeInfo.publisher}</td><br><td>${book_info.volumeInfo.publishedDate}</td><br><td>${book_info.volumeInfo.description}</td><br>`;
+              show.innerHTML = book_text;
+            })
+            .catch((error) => {
+              console.log(`Error: ${error}`);
+            });
+        });
+      });
+    </script>
+  </body>
+</html>

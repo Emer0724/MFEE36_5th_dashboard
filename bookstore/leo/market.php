@@ -25,7 +25,7 @@ if ($totalRows) {
         header("Location: ?page=$totalPages");
         exit;
     }
-    $sql = sprintf("SELECT * FROM  book_info ORDER BY ISBN DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $sql = "SELECT * FROM  book_info ORDER BY ISBN DESC ";
 
     $rows = $pdo->query($sql)->fetchAll();
 }

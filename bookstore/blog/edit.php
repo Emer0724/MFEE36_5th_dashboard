@@ -103,7 +103,7 @@ $r = $pdo->query($sql)->fetch();
                         infoBar.style.display = 'block';
                         window.location.replace('blog-filter.php')
                         setTimeout(() => {
-                            window.location.href = "blog-filter";
+                            window.location.href = "blog-filter.php";
                         }, 2000);
                     } else {
                         infoBar.classList.remove('alert-success')
